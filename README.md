@@ -29,6 +29,13 @@ and the rest answer by name in any Claude Code window opened in that folder. `cl
 workflow` shows what it costs you per session; `claude plugin uninstall workflow --scope project`
 removes it.
 
+## Names
+
+The loop's French name is **CADRER** (Choisir, Affiner, Détailler, Répartir, Exécuter, Réviser), taught
+in the free course **Première Livraison**. A rename of this plugin to `cadrer`, and a French twin for
+the course's learners, are planned but not done — see `NAMING.md` for the decisions and the order they
+happen in.
+
 ## Where these come from
 
 The skills in this repo are **copies**. They are written and revised in `~/Desktop/skill-hub/skills`, which is the
