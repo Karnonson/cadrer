@@ -36,6 +36,21 @@ in the free course **Première Livraison**. A rename of this plugin to `cadrer`,
 the course's learners, are planned but not done — see `NAMING.md` for the decisions and the order they
 happen in.
 
+## Tools
+
+`tools/token_estimate.py` counts what a skill set costs in tokens, and compares the English set with a
+French twin (paired through the CADRER names). Claude's tokenizer is not public, so it counts with public
+ones — OpenAI's, Llama 3, Qwen 3, DeepSeek V3, Mistral Nemo, Gemma 3 — and reports the FR/EN ratio across
+them; with `ANTHROPIC_API_KEY` set it adds Claude's exact count from `count_tokens`.
+
+```
+uv run tools/token_estimate.py plugins/workflow/skills                           # one set
+uv run tools/token_estimate.py plugins/workflow/skills path/to/cadrer-fr/skills  # EN against FR
+```
+
+`--detail o200k` breaks it down per skill, `--json` prints the numbers. The public page for non-technical
+readers, *Le prix du français*, lives in its own repo, `~/Desktop/prix-du-francais`.
+
 ## Where these come from
 
 The skills in this repo are **copies**. They are written and revised in `~/Desktop/skill-hub/skills`, which is the
