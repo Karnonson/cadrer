@@ -1,5 +1,5 @@
 ---
-name: implement
+name: {{slug}}
 description: {{description}}
 argument-hint: {{argument_hint}}
 ---
@@ -14,4 +14,4 @@ Build this slice only, nothing for later slices: the smallest thing that makes e
 
 Run it the way they would — the real command, the real click — and try every {{m_done_when}} line as a person would: something in the code they cannot reach does not make a line false. Tick a box only after you saw it pass; a check you ran that covers the line counts. A box you could not try stays open, one line saying why. A line that cannot be made true as written: build what it meant, leave the box open, say why — the audit corrects it. Anything the spec did not foresee: smallest reasonable choice, one line each under the slice starting **{{m_chosen}}{{colon}}**.
 
-Finish: under the slice add **{{m_how_to_run}}{{colon}}** the command and **{{m_files}}{{colon}}** what you made or changed. If it has a screen, screenshot what this slice added — on a fix pass, the behaviour that changed — one per state, look at each yourself, put them in your message. Commit the code, `{{slices_file}}` and anything still untracked under `builds/`, with the slice number and title as the message, `— {{v_fix}}` after it on a fix pass. Stop and say: run the audit skill in a new window before merging or starting the next slice.
+Finish: under the slice add **{{m_how_to_run}}{{colon}}** the command and **{{m_files}}{{colon}}** what you made or changed. If it has a screen, screenshot what this slice added — on a fix pass, the behaviour that changed — one per state, look at each yourself, put them in your message. Commit the code, `{{slices_file}}` and anything still untracked under `builds/`, with the slice number and title as the message, `— {{v_fix}}` after it on a fix pass. Stop and say: run the {{slug_audit}} skill in a new window before merging or starting the next slice.

@@ -1,15 +1,9 @@
 {
-  "name": {{marketplace_name}},
+  "name": "cadrer",
   "owner": {
     "name": "Zana",
     "url": "https://github.com/Karnonson"
   },
-  "plugins": [
-    {
-      "name": "cadrer",
-      "source": "./plugins/cadrer",
-      "description": {{plugin_description}}
-    }
-  ],
-  "description": {{marketplace_description}}
+  "plugins": {{plugins}},
+  "description": "CADRER, the six-step build loop taught in Première Livraison, as two plugins: cadrer (French commands and files) and cadrer-en (English)."
 }

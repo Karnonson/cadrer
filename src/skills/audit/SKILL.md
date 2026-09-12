@@ -1,5 +1,5 @@
 ---
-name: audit
+name: {{slug}}
 description: {{description}}
 argument-hint: {{argument_hint}}
 ---
@@ -16,4 +16,4 @@ Write `audits/<NN>.md` beside `{{slices_file}}` — a second pass appends **{{h_
 
 End with **Verdict**. *{{v_merge}}* when every {{m_done_when}} line holds and the seams pass. *{{v_fix}}* only for a {{m_done_when}} line missing or part done, wrong behaviour, a crash, something built no line asked for, or a seam whose checks pass while the behaviour is wrong — its missing case on the list too, shortest first. *{{v_back}}* when the slice or the spec was wrong, say which line. But a line the build could not meet as written, or a **{{m_chosen}}{{colon}}** that settled a spec contradiction, with the code right, is *{{v_merge}}*: rewrite that line in `{{slices_file}}` (and `spec.md`) to what was built and tick it, old and new under **{{h_corrected}}**. Under any verdict, code findings and what merely reads wrong go under **{{h_later}}**, never on the fix-first list; leave ticked boxes as they are — the audit records what is true. A second pass ends in {{v_merge}} or {{v_back}}, never {{v_fix}}: an item only half landed is *{{v_back}}*. After the slice's **{{m_files}}{{colon}}** line in `{{slices_file}}` — after **{{m_fixed}}{{colon}}** on a second pass — add **{{m_audit}}{{colon}}** the verdict, `audits/<NN>.md`, one line why.
 
-Show the verdict and the fix-first list, or that there is none, then stop. Never fix code, never merge: fixes go to the implement skill on the same slice, in a new window.
+Show the verdict and the fix-first list, or that there is none, then stop. Never fix code, never merge: fixes go to the {{slug_implement}} skill on the same slice, in a new window.

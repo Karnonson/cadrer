@@ -1,5 +1,5 @@
 ---
-name: refine
+name: {{slug}}
 description: {{description}}
 argument-hint: {{argument_hint}}
 ---

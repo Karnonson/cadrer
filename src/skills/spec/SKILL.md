@@ -1,5 +1,5 @@
 ---
-name: spec
+name: {{slug}}
 description: {{description}}
 argument-hint: {{argument_hint}}
 ---
@@ -12,7 +12,7 @@ Then write `spec.md` beside the other two with exactly these headings:
 
 - **{{h_spec_problem}}** — from their side, two or three sentences, lifted from the frame.
 - **{{h_solution}}** — what they will see and do. No technology words.
-- **{{h_look}}** — only if it has a screen: the feel in three words, colours by name, type mood, imagery, one reference site. {{h_assumed}} if the refine step left it.
+- **{{h_look}}** — only if it has a screen: the feel in three words, colours by name, type mood, imagery, one reference site. {{h_assumed}} if the {{slug_refine}} step left it.
 - **{{h_stories}}** — a long numbered list: "{{story_form}}". One story per behaviour, every settled decision covered, awkward cases included (not a client call, first run, empty list).
 - **{{h_impl}}** — one line per decision that shapes the build, {{h_assumed}} ones included and marked, plus the parts to build and how they talk to each other. No file paths, no code — unless a prototype pinned a shape better than prose, or a name the person will type is itself the decision; then inline it and say where it came from.
 - **{{h_testing}}** — the seams agreed above, and the rule: test what it does, never how.

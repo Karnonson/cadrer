@@ -1,6 +1,6 @@
 ---
-name: ideate
-description: "Choisir : trouver l'idée. À utiliser quand quelqu'un arrive avec un problème, un agacement ou une vague idée d'appli et n'a pas encore décidé quoi construire. Une séance d'idéation — le problème d'abord, une large divergence, un seul choix — qui se termine par `idee.md` et aucun code. Pas pour planifier, spécifier ni construire quelque chose de déjà décidé."
+name: choisir
+description: "Trouver l'idée. À utiliser quand quelqu'un arrive avec un problème, un agacement ou une vague idée d'appli et n'a pas encore décidé quoi construire. Une séance d'idéation — le problème d'abord, une large divergence, un seul choix — qui se termine par `idee.md` et aucun code. Pas pour planifier, spécifier ni construire quelque chose de déjà décidé."
 argument-hint: "[le problème en une phrase, facultatif]"
 ---
 

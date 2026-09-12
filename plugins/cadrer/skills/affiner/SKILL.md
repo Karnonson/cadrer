@@ -1,6 +1,6 @@
 ---
-name: refine
-description: "Affiner : trancher les décisions. À utiliser quand `idee.md` existe et avant toute spec. Interroge la personne une question à la fois jusqu'à ce que chaque décision derrière l'idée soit prise, ou laissée ouverte en connaissance de cause, puis les écrit dans `decisions.md`. Ne construit jamais, ne spécifie jamais."
+name: affiner
+description: "Trancher les décisions. À utiliser quand `idee.md` existe et avant toute spec. Interroge la personne une question à la fois jusqu'à ce que chaque décision derrière l'idée soit prise, ou laissée ouverte en connaissance de cause, puis les écrit dans `decisions.md`. Ne construit jamais, ne spécifie jamais."
 argument-hint: "[numéro ou nom du dossier]"
 ---
 

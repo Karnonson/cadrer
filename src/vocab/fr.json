@@ -1,8 +1,7 @@
 {
   "language": "French",
-  "marketplace_name": "cadrer",
-  "marketplace_description": "CADRER, la boucle de construction enseignée dans Première Livraison : six petites compétences, une par étape, qui transforment un problème en appli en ligne. Fichiers en français.",
-  "plugin_description": "CADRER, la boucle en six étapes : choisir, affiner, détailler, répartir, exécuter, réviser. Une compétence par étape ; chacune écrit un fichier dans le dossier du chantier et le passe à la suivante. Fichiers en français.",
+  "plugin_name": "cadrer",
+  "plugin_description": "CADRER, la boucle en six étapes : choisir, affiner, détailler, répartir, exécuter, réviser. Une compétence par étape ; chacune écrit un fichier dans le dossier du chantier et le passe à la suivante. Commandes et fichiers en français.",
   "vocab": {
     "language_line": "Answer, and write the files' contents, in French; file names and headings stay as written here.",
     "colon": " :",
@@ -47,27 +46,33 @@
   },
   "skills": {
     "ideate": {
-      "description": "Choisir : trouver l'idée. À utiliser quand quelqu'un arrive avec un problème, un agacement ou une vague idée d'appli et n'a pas encore décidé quoi construire. Une séance d'idéation — le problème d'abord, une large divergence, un seul choix — qui se termine par `idee.md` et aucun code. Pas pour planifier, spécifier ni construire quelque chose de déjà décidé.",
+      "slug": "choisir",
+      "description": "Trouver l'idée. À utiliser quand quelqu'un arrive avec un problème, un agacement ou une vague idée d'appli et n'a pas encore décidé quoi construire. Une séance d'idéation — le problème d'abord, une large divergence, un seul choix — qui se termine par `idee.md` et aucun code. Pas pour planifier, spécifier ni construire quelque chose de déjà décidé.",
       "argument_hint": "[le problème en une phrase, facultatif]"
     },
     "refine": {
-      "description": "Affiner : trancher les décisions. À utiliser quand `idee.md` existe et avant toute spec. Interroge la personne une question à la fois jusqu'à ce que chaque décision derrière l'idée soit prise, ou laissée ouverte en connaissance de cause, puis les écrit dans `decisions.md`. Ne construit jamais, ne spécifie jamais.",
+      "slug": "affiner",
+      "description": "Trancher les décisions. À utiliser quand `idee.md` existe et avant toute spec. Interroge la personne une question à la fois jusqu'à ce que chaque décision derrière l'idée soit prise, ou laissée ouverte en connaissance de cause, puis les écrit dans `decisions.md`. Ne construit jamais, ne spécifie jamais.",
       "argument_hint": "[numéro ou nom du dossier]"
     },
     "spec": {
-      "description": "Détailler : écrire la spec. À utiliser quand les décisions sont prises et avant tout découpage. Transforme `idee.md` et `decisions.md` en une seule spec — synthèse seulement, pas d'entretien. Ne construit jamais.",
+      "slug": "detailler",
+      "description": "Écrire la spec. À utiliser quand les décisions sont prises et avant tout découpage. Transforme `idee.md` et `decisions.md` en une seule spec — synthèse seulement, pas d'entretien. Ne construit jamais.",
       "argument_hint": "[numéro ou nom du dossier]"
     },
     "slice": {
-      "description": "Répartir : découper en tranches. À utiliser quand la spec existe et avant tout code. Découpe la spec en tranches traçantes, chacune disant ce qui la bloque, dans `tranches.md`. Ne construit jamais.",
+      "slug": "repartir",
+      "description": "Découper en tranches. À utiliser quand la spec existe et avant tout code. Découpe la spec en tranches traçantes, chacune disant ce qui la bloque, dans `tranches.md`. Ne construit jamais.",
       "argument_hint": "[numéro ou nom du dossier]"
     },
     "implement": {
-      "description": "Exécuter : construire une tranche. À utiliser quand les tranches existent. Construit exactement une tranche — celle nommée, sinon la prochaine dont les bloqueurs sont faits — la lance, coche ses cases « Fait quand », commit. Une tranche par fenêtre ; les tranches ouvertes peuvent avancer en parallèle, une fenêtre chacune.",
+      "slug": "executer",
+      "description": "Construire une tranche. À utiliser quand les tranches existent. Construit exactement une tranche — celle nommée, sinon la prochaine dont les bloqueurs sont faits — la lance, coche ses cases « Fait quand », commit. Une tranche par fenêtre ; les tranches ouvertes peuvent avancer en parallèle, une fenêtre chacune.",
       "argument_hint": "[dossier] [tranche]"
     },
     "audit": {
-      "description": "Réviser : auditer la tranche. À utiliser quand la compétence implement a fini une tranche, avant de la fusionner ou d'entamer la suivante. Audite les changements de la tranche sur deux axes — fait-elle ce que la tranche et la spec demandaient, le code est-il sain — dans des sous-agents en lecture seule, et écrit un audit avec un verdict. Ne corrige jamais le code, ne fusionne jamais.",
+      "slug": "reviser",
+      "description": "Auditer la tranche. À utiliser quand la compétence executer a fini une tranche, avant de la fusionner ou d'entamer la suivante. Audite les changements de la tranche sur deux axes — fait-elle ce que la tranche et la spec demandaient, le code est-il sain — dans des sous-agents en lecture seule, et écrit un audit avec un verdict. Ne corrige jamais le code, ne fusionne jamais.",
       "argument_hint": "[dossier] [tranche]"
     }
   }

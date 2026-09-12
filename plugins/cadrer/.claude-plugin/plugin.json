@@ -1,6 +1,6 @@
 {
   "name": "cadrer",
-  "description": "CADRER, la boucle en six étapes : choisir, affiner, détailler, répartir, exécuter, réviser. Une compétence par étape ; chacune écrit un fichier dans le dossier du chantier et le passe à la suivante. Fichiers en français.",
+  "description": "CADRER, la boucle en six étapes : choisir, affiner, détailler, répartir, exécuter, réviser. Une compétence par étape ; chacune écrit un fichier dans le dossier du chantier et le passe à la suivante. Commandes et fichiers en français.",
   "version": "0.3.0",
   "author": {
     "name": "Zana"

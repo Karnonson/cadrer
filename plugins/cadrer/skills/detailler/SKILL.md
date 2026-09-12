@@ -1,6 +1,6 @@
 ---
-name: spec
-description: "Détailler : écrire la spec. À utiliser quand les décisions sont prises et avant tout découpage. Transforme `idee.md` et `decisions.md` en une seule spec — synthèse seulement, pas d'entretien. Ne construit jamais."
+name: detailler
+description: "Écrire la spec. À utiliser quand les décisions sont prises et avant tout découpage. Transforme `idee.md` et `decisions.md` en une seule spec — synthèse seulement, pas d'entretien. Ne construit jamais."
 argument-hint: "[numéro ou nom du dossier]"
 ---
 
@@ -12,7 +12,7 @@ Then write `spec.md` beside the other two with exactly these headings:
 
 - **Problème** — from their side, two or three sentences, lifted from the frame.
 - **Solution** — what they will see and do. No technology words.
-- **Apparence** — only if it has a screen: the feel in three words, colours by name, type mood, imagery, one reference site. Supposé if the refine step left it.
+- **Apparence** — only if it has a screen: the feel in three words, colours by name, type mood, imagery, one reference site. Supposé if the affiner step left it.
 - **User stories** — a long numbered list: "En tant que <qui>, je veux <quoi>, afin de <bénéfice>". One story per behaviour, every settled decision covered, awkward cases included (not a client call, first run, empty list).
 - **Décisions de réalisation** — one line per decision that shapes the build, Supposé ones included and marked, plus the parts to build and how they talk to each other. No file paths, no code — unless a prototype pinned a shape better than prose, or a name the person will type is itself the decision; then inline it and say where it came from.
 - **Décisions de test** — the seams agreed above, and the rule: test what it does, never how.

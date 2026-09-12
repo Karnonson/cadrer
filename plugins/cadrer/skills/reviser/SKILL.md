@@ -1,6 +1,6 @@
 ---
-name: audit
-description: "Réviser : auditer la tranche. À utiliser quand la compétence implement a fini une tranche, avant de la fusionner ou d'entamer la suivante. Audite les changements de la tranche sur deux axes — fait-elle ce que la tranche et la spec demandaient, le code est-il sain — dans des sous-agents en lecture seule, et écrit un audit avec un verdict. Ne corrige jamais le code, ne fusionne jamais."
+name: reviser
+description: "Auditer la tranche. À utiliser quand la compétence executer a fini une tranche, avant de la fusionner ou d'entamer la suivante. Audite les changements de la tranche sur deux axes — fait-elle ce que la tranche et la spec demandaient, le code est-il sain — dans des sous-agents en lecture seule, et écrit un audit avec un verdict. Ne corrige jamais le code, ne fusionne jamais."
 argument-hint: "[dossier] [tranche]"
 ---
 
@@ -16,4 +16,4 @@ Write `audits/<NN>.md` beside `tranches.md` — a second pass appends **Deuxièm
 
 End with **Verdict**. *fusionner* when every Fait quand line holds and the seams pass. *corriger d'abord* only for a Fait quand line missing or part done, wrong behaviour, a crash, something built no line asked for, or a seam whose checks pass while the behaviour is wrong — its missing case on the list too, shortest first. *retour à la tranche* when the slice or the spec was wrong, say which line. But a line the build could not meet as written, or a **Choisi :** that settled a spec contradiction, with the code right, is *fusionner*: rewrite that line in `tranches.md` (and `spec.md`) to what was built and tick it, old and new under **Rectifié**. Under any verdict, code findings and what merely reads wrong go under **Plus tard**, never on the fix-first list; leave ticked boxes as they are — the audit records what is true. A second pass ends in fusionner or retour à la tranche, never corriger d'abord: an item only half landed is *retour à la tranche*. After the slice's **Fichiers :** line in `tranches.md` — after **Corrigé :** on a second pass — add **Audit :** the verdict, `audits/<NN>.md`, one line why.
 
-Show the verdict and the fix-first list, or that there is none, then stop. Never fix code, never merge: fixes go to the implement skill on the same slice, in a new window.
+Show the verdict and the fix-first list, or that there is none, then stop. Never fix code, never merge: fixes go to the executer skill on the same slice, in a new window.

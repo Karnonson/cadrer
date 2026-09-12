@@ -1,6 +1,6 @@
 ---
-name: implement
-description: "Exécuter : construire une tranche. À utiliser quand les tranches existent. Construit exactement une tranche — celle nommée, sinon la prochaine dont les bloqueurs sont faits — la lance, coche ses cases « Fait quand », commit. Une tranche par fenêtre ; les tranches ouvertes peuvent avancer en parallèle, une fenêtre chacune."
+name: executer
+description: "Construire une tranche. À utiliser quand les tranches existent. Construit exactement une tranche — celle nommée, sinon la prochaine dont les bloqueurs sont faits — la lance, coche ses cases « Fait quand », commit. Une tranche par fenêtre ; les tranches ouvertes peuvent avancer en parallèle, une fenêtre chacune."
 argument-hint: "[dossier] [tranche]"
 ---
 
@@ -14,4 +14,4 @@ Build this slice only, nothing for later slices: the smallest thing that makes e
 
 Run it the way they would — the real command, the real click — and try every Fait quand line as a person would: something in the code they cannot reach does not make a line false. Tick a box only after you saw it pass; a check you ran that covers the line counts. A box you could not try stays open, one line saying why. A line that cannot be made true as written: build what it meant, leave the box open, say why — the audit corrects it. Anything the spec did not foresee: smallest reasonable choice, one line each under the slice starting **Choisi :**.
 
-Finish: under the slice add **Pour lancer :** the command and **Fichiers :** what you made or changed. If it has a screen, screenshot what this slice added — on a fix pass, the behaviour that changed — one per state, look at each yourself, put them in your message. Commit the code, `tranches.md` and anything still untracked under `builds/`, with the slice number and title as the message, `— corriger d'abord` after it on a fix pass. Stop and say: run the audit skill in a new window before merging or starting the next slice.
+Finish: under the slice add **Pour lancer :** the command and **Fichiers :** what you made or changed. If it has a screen, screenshot what this slice added — on a fix pass, the behaviour that changed — one per state, look at each yourself, put them in your message. Commit the code, `tranches.md` and anything still untracked under `builds/`, with the slice number and title as the message, `— corriger d'abord` after it on a fix pass. Stop and say: run the reviser skill in a new window before merging or starting the next slice.

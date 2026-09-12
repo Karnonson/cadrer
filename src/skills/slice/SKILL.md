@@ -1,5 +1,5 @@
 ---
-name: slice
+name: {{slug}}
 description: {{description}}
 argument-hint: {{argument_hint}}
 ---

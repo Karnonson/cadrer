@@ -1,6 +1,6 @@
 ---
-name: slice
-description: "Répartir : découper en tranches. À utiliser quand la spec existe et avant tout code. Découpe la spec en tranches traçantes, chacune disant ce qui la bloque, dans `tranches.md`. Ne construit jamais."
+name: repartir
+description: "Découper en tranches. À utiliser quand la spec existe et avant tout code. Découpe la spec en tranches traçantes, chacune disant ce qui la bloque, dans `tranches.md`. Ne construit jamais."
 argument-hint: "[numéro ou nom du dossier]"
 ---
 

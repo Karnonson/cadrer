@@ -1,8 +1,9 @@
 # Naming — CADRER
 
 Names decided 2026-09-10. Built in this repo on 2026-09-12 as plugin `cadrer`
-0.3.0: English commands, and two renders of the same source, one per language,
-picked at install. This file records what the names are, what was tried and
+0.3.0: two plugins rendered from one source, `cadrer` with French commands and
+files and `cadrer-en` with English ones, picked at install. This file records
+what the names are, what was tried and
 dropped on the way, and what still has to happen, in what order.
 
 ## The two names
@@ -13,26 +14,25 @@ dropped on the way, and what still has to happen, in what order.
 | Method | **CADRER** | This loop. The French verb *cadrer* — to keep something in frame — and the six steps spell it |
 
 `CADRER` is an acronym, written in caps when it names the method. The plain verb
-`cadrer` stays lowercase and free. It names the plugin, both marketplaces
-(`cadrer`, `cadrer-en`) and, once renamed, the GitHub repo. It is the one name
-for both languages: methods keep their birth name when they cross a border
+`cadrer` stays lowercase and free. It names the marketplace, the French plugin
+(`cadrer-en` for the English one) and, once renamed, the GitHub repo. It is the
+one name for both languages: methods keep their birth name when they cross a border
 (Kanban, Kaizen, Scrum), and the English lesson gets one sentence saying where
 the word comes from.
 
-| Letter | Step (FR) | Command | Writes (FR) | Writes (EN) |
-| --- | --- | --- | --- | --- |
-| **C** | Choisir | `/cadrer:ideate` | `idee.md` | `idea.md` |
-| **A** | Affiner | `/cadrer:refine` | `decisions.md` | `decisions.md` |
-| **D** | Détailler | `/cadrer:spec` | `spec.md` | `spec.md` |
-| **R** | Répartir | `/cadrer:slice` | `tranches.md` | `slices.md` |
-| **E** | Exécuter | `/cadrer:implement` | the code, plus ticks under the slice | same |
-| **R** | Réviser | `/cadrer:audit` | `audits/<NN>.md` | `audits/<NN>.md` |
+| Letter | Step | French command | English command | Writes (FR) | Writes (EN) |
+| --- | --- | --- | --- | --- | --- |
+| **C** | Choisir | `/cadrer:choisir` | `/cadrer-en:ideate` | `idee.md` | `idea.md` |
+| **A** | Affiner | `/cadrer:affiner` | `/cadrer-en:refine` | `decisions.md` | `decisions.md` |
+| **D** | Détailler | `/cadrer:detailler` | `/cadrer-en:spec` | `spec.md` | `spec.md` |
+| **R** | Répartir | `/cadrer:repartir` | `/cadrer-en:slice` | `tranches.md` | `slices.md` |
+| **E** | Exécuter | `/cadrer:executer` | `/cadrer-en:implement` | the code, plus ticks under the slice | same |
+| **R** | Réviser | `/cadrer:reviser` | `/cadrer-en:audit` | `audits/<NN>.md` | `audits/<NN>.md` |
 
-The steps carry the method's name; the commands are English in both languages,
-so there is one set of commands to teach, to cross-reference between skills,
-and to type — no accents to drop, no second vocabulary of slugs. The learner
-meets the French step name where the command is chosen: each skill's
-description in the `/` menu opens with it (*Choisir : trouver l'idée*).
+Typing the six French commands spells the method. Step 1 is **choisir**, not
+*cadrer* — otherwise the word names both the loop and its first step. The
+English plugin keeps the English step names, and its menu descriptions open
+with the French one (*Choisir — ideate*) so the acronym still reads.
 
 ## Why deploying and monitoring never join the acronym
 
@@ -49,26 +49,27 @@ covering real deployment, architecture, secrets, tests, monitoring.
 belongs to the build loop, it goes inside one of the six letters or out into the
 outer ring. CADRER is never renamed to make room.
 
-## Done 2026-09-12 — `cadrer` 0.3.0: one source, two renders
+## Done 2026-09-12 — `cadrer` 0.3.0: one source, two plugins
 
 What the learner picks, and where:
 
 - **The language, at install.** `cadrer@cadrer` writes and shows French,
-  `cadrer@cadrer-en` English. Same plugin name, same six commands, same bodies.
-  Not a runtime setting: Claude Code has no install-time prompt, so the choice
-  is the install line, and the two course exports each give their own.
-- **Two marketplaces because of one rule.** Claude Code keys plugins by name
-  inside a marketplace and uses the plugin name as the command prefix. Two
-  plugins named `cadrer` cannot share a marketplace, and a marketplace cannot
-  be added from a branch (`claude plugin marketplace add` takes a URL, a path
-  or a GitHub repo). So the English render is its own marketplace, `cadrer-en`,
-  in its own repo, pushed by `deploy-en.sh` the way the web page is deployed.
+  `cadrer-en@cadrer` English. Same bodies, same version, one marketplace. Not
+  a runtime setting: Claude Code has no install-time prompt, so the choice is
+  the install line, and the two course exports each give their own.
+- **Why the English plugin has its own name.** Claude Code keys plugins by
+  name inside a marketplace and uses the plugin name as the command prefix.
+  Two plugins named `cadrer` cannot share a marketplace, so the English one is
+  `cadrer-en` and its commands are `/cadrer-en:ideate`. The alternative — one
+  plugin holding all twelve skills — would show both languages in every menu
+  and load both sets of descriptions on every run, for everyone.
 
 What differs between the renders — the whole vocabulary, from `src/vocab/`:
 
 | Where | French | English |
 | --- | --- | --- |
-| `/` menu: description | *Choisir : trouver l'idée. À utiliser quand…* | *Choisir — ideate. Use when…* |
+| Plugin, commands | `cadrer`: `choisir`, `affiner`, `detailler`, `repartir`, `executer`, `reviser` | `cadrer-en`: `ideate`, `refine`, `spec`, `slice`, `implement`, `audit` |
+| `/` menu: description | *Trouver l'idée. À utiliser quand…* | *Choisir — ideate. Use when…* |
 | `/` menu: argument hint | `[numéro ou nom du dossier]`, `[dossier] [tranche]` | `[build number or name]`, `[build] [slice]` |
 | Files | `idee.md`, `tranches.md` | `idea.md`, `slices.md` |
 | `idee.md` headings | Le problème · En une phrase · Pourquoi celle-ci · Écartées · Pas encore · Encore ouvert · Jusqu'où on est allé | The problem · The one sentence · Why this one · Ruled out · Not yet · Still open · How far I took it |
@@ -97,14 +98,13 @@ Bodies are English in both renders. Measured the same day with
 one when a skill runs, 1.31× for the always-loaded descriptions; a fully
 translated body cost 1.27–1.41×.
 
-## Dropped 2026-09-12 — French command names
+## Dropped 2026-09-12 — a second repo
 
-For a few hours the six commands were the step names without accents
-(`/cadrer:choisir`, `detailler`, `repartir`…). Dropped the same day, before any
-push: it meant two sets of command names to teach and to cross-reference
-between skills, and typing `detailler` for *Détailler* is worse than typing
-`spec`. The step names moved into the menu descriptions, where the accents
-survive.
+For an hour both plugins were named `cadrer`, with English commands in both,
+and the English one lived in a generated `cadrer-en` repo so that both could
+type `/cadrer:ideate`. Dropped the same day: two repos to keep in step for one
+prefix, and the French commands are the method — a French learner types
+`choisir`, not `ideate`. One marketplace, two plugin names instead.
 
 ## Dropped 2026-09-12 — the French twin
 
@@ -126,7 +126,7 @@ To paste into lesson 4.2 (`tu` register, like the rest of the French export):
 > 1. **Ça coûte moins.** Pour la même consigne, le français demande environ un
 >    quart de jetons en plus — des jetons que tu paies à chaque lancement. Fais
 >    l'essai avec tes propres phrases : [Le prix du français](https://karnonson.github.io/prix-du-francais/).
-> 2. **Tout ce que tu vois est en français.** Tu tapes `/cadrer:ideate`, tu
+> 2. **Tout ce que tu vois est en français.** Tu tapes `/cadrer:choisir`, tu
 >    expliques ton problème en français, et `idee.md` sort en français, avec
 >    des titres en français. La compétence dit à Claude dans quelle langue te
 >    répondre et écrire ; c'est la version que tu as installée qui le fixe.
@@ -139,21 +139,19 @@ To paste into lesson 4.2 (`tu` register, like the rest of the French export):
 
 1. **The course pass.** Lessons 4.2 to 4.8 and both platform exports still say
    `/workflow:ideate` and `claude plugin install workflow@workflow-skills`.
-   Replace the command prefix, the install lines (French export: `cadrer@cadrer`;
-   English export: `cadrer@cadrer-en`), `claude plugin details workflow`, and add
-   the box above to 4.2. The "Did it work?" file checks change in the French
+   Replace the commands (French export: `/cadrer:choisir`…; English export:
+   `/cadrer-en:ideate`…), the install lines (`cadrer@cadrer`, `cadrer-en@cadrer`),
+   `claude plugin details workflow`, and add the box above to 4.2. The "Did it work?" file checks change in the French
    export: `idee.md`, `tranches.md`, and the headings and markers in the table
    above (`Fait quand`, not `Done when`).
 2. **Rename the GitHub repo** `workflow-skills` → `cadrer` (`gh repo rename
    cadrer`; GitHub redirects the old address). The README's install line already
    says `Karnonson/cadrer`.
-3. **Create `Karnonson/cadrer-en`** (empty, public) and run `./deploy-en.sh`
-   after each release; the first time, right after the rename.
-4. **Push.** The rename is committed, not pushed. Pushing is what makes
+3. **Push.** The rename is committed, not pushed. Pushing is what makes
    `cadrer@cadrer` installable and makes the old `workflow@workflow-skills` stop
    resolving for new installs; do it together with the course pass, or just
    before.
-5. **The hub.** The course's rule says `~/Desktop/skill-hub/skills` is the
+4. **The hub.** The course's rule says `~/Desktop/skill-hub/skills` is the
    source of truth and this repo holds copies. That is no longer how it works:
    `src/` here is the source, both renders are generated from it, and the
    course copy in `~/Desktop/ai-coding-course/skills/` should be one of the

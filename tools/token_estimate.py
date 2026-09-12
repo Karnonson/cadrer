@@ -12,12 +12,12 @@ ends with the median ratio across them as the estimate for Claude.
 If ANTHROPIC_API_KEY is set, Claude's own count_tokens endpoint is added as an
 exact row (it costs nothing, but sends the text to the API).
 
-    uv run tools/token_estimate.py en/plugins/cadrer/skills
-    uv run tools/token_estimate.py en/plugins/cadrer/skills plugins/cadrer/skills
+    uv run tools/token_estimate.py plugins/cadrer-en/skills
+    uv run tools/token_estimate.py plugins/cadrer-en/skills plugins/cadrer/skills
     uv run tools/token_estimate.py en.md fr.md --detail o200k
 
-Directories are scanned for SKILL.md files. Skills are paired by folder name;
---map EN=FR pairs folders that carry different names.
+Directories are scanned for SKILL.md files. Skills are paired by folder name,
+through the CADRER slugs (ideate=choisir, ...) unless --map overrides it.
 """
 
 from __future__ import annotations
@@ -30,6 +30,15 @@ import sys
 import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
+
+CADRER_MAP = {
+    "ideate": "choisir",
+    "refine": "affiner",
+    "spec": "detailler",
+    "slice": "repartir",
+    "implement": "executer",
+    "audit": "reviser",
+}
 
 TIKTOKEN = {
     "o200k": ("o200k_base", "OpenAI GPT-4o / 4.1 / o-series / GPT-5"),
@@ -175,14 +184,14 @@ def main() -> None:
     parser.add_argument("en", type=Path, help="English skill file or directory (or the only set to count)")
     parser.add_argument("fr", type=Path, nargs="?", help="French twin file or directory")
     parser.add_argument("--map", action="append", default=[], metavar="EN=FR",
-                        help="pair skill folders that carry different names (repeatable)")
+                        help="pair skill folders by name; replaces the CADRER slugs (repeatable)")
     parser.add_argument("--only", help="comma-separated tokenizers: " + ", ".join([*TIKTOKEN, *HUGGINGFACE]))
     parser.add_argument("--detail", metavar="TOKENIZER", help="per-skill breakdown with this tokenizer")
     parser.add_argument("--claude-model", default="claude-sonnet-5", help="model for count_tokens (default: %(default)s)")
     parser.add_argument("--json", action="store_true", help="print the numbers as JSON")
     args = parser.parse_args()
 
-    mapping = dict(m.split("=", 1) for m in args.map)
+    mapping = dict(m.split("=", 1) for m in args.map) if args.map else CADRER_MAP
     en_docs = load(args.en, {})
     fr_docs = load(args.fr, {fr: en for en, fr in mapping.items()}) if args.fr else []
     pairs = pair(en_docs, fr_docs) if args.fr else []
