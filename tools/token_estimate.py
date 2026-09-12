@@ -12,8 +12,8 @@ ends with the median ratio across them as the estimate for Claude.
 If ANTHROPIC_API_KEY is set, Claude's own count_tokens endpoint is added as an
 exact row (it costs nothing, but sends the text to the API).
 
-    uv run tools/token_estimate.py plugins/cadrer-en/skills
-    uv run tools/token_estimate.py plugins/cadrer-en/skills plugins/cadrer/skills
+    uv run tools/token_estimate.py plugins/cadrer/skills
+    uv run tools/token_estimate.py path/to/en/skills plugins/cadrer/skills
     uv run tools/token_estimate.py en.md fr.md --detail o200k
 
 Directories are scanned for SKILL.md files. Skills are paired by folder name,

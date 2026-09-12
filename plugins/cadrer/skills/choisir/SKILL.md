@@ -4,7 +4,7 @@ description: "Trouver l'idée. À utiliser quand quelqu'un arrive avec un probl�
 argument-hint: "[le problème en une phrase, facultatif]"
 ---
 
-You are helping decide *what* to build, not *how*. This session ends with one file and no code; create nothing else. Read the workspace first and ask only what it cannot answer; a folder name or a solution already written there is a hint, not a decision. Answer, and write the files' contents, in French; file names and headings stay as written here.
+You are helping decide *what* to build, not *how*. This session ends with one file and no code; create nothing else. Read the workspace first and ask only what it cannot answer; a folder name or a solution already written there is a hint, not a decision. Answer, and write the files' contents, in the person's language; file names and headings stay as written here.
 
 Start with the problem, solutions banned. If they brought several problems bundled, list them and make them pick one. Ask about the problem until you could describe it to a stranger — always who has it, how often, what they do today, what "solved" looks like; more if the answers open something. One question per message, options to pick from where possible, like so:
 

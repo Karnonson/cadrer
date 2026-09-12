@@ -8,13 +8,8 @@
     {
       "name": "cadrer",
       "source": "./plugins/cadrer",
-      "description": "CADRER, la boucle en six étapes : choisir, affiner, détailler, répartir, exécuter, réviser. Une compétence par étape ; chacune écrit un fichier dans le dossier du chantier et le passe à la suivante. Commandes et fichiers en français."
-    },
-    {
-      "name": "cadrer-en",
-      "source": "./plugins/cadrer-en",
-      "description": "CADRER, the six-step build loop: ideate, refine, spec, slice, implement, audit. One skill per step; each writes one file into the build folder and hands it to the next. Commands and files in English."
+      "description": "CADRER, la boucle en six étapes : choisir, affiner, détailler, répartir, exécuter, réviser. Une compétence par étape ; chacune écrit un fichier dans le dossier du chantier et le passe à la suivante."
     }
   ],
-  "description": "CADRER, the six-step build loop taught in Première Livraison, as two plugins: cadrer (French commands and files) and cadrer-en (English)."
+  "description": "CADRER, the six-step build loop taught in Première Livraison."
 }

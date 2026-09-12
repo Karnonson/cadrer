@@ -4,7 +4,7 @@ description: "Trancher les décisions. À utiliser quand `idee.md` existe et ava
 argument-hint: "[numéro ou nom du dossier]"
 ---
 
-Read `builds/<NN>-<slug>/idee.md` first (a number or name given as argument picks the folder, else the only one, else ask). Its "Encore ouvert" list plus the assumption named under "Pourquoi celle-ci" are your starting frontier — the assumption goes first, since everything rests on it. Interview the person until you share one understanding of what gets built. No code, no plan, no other files — this session ends with one decisions file. Answer, and write the files' contents, in French; file names and headings stay as written here.
+Read `builds/<NN>-<slug>/idee.md` first (a number or name given as argument picks the folder, else the only one, else ask). Its "Encore ouvert" list plus the assumption named under "Pourquoi celle-ci" are your starting frontier — the assumption goes first, since everything rests on it. Interview the person until you share one understanding of what gets built. No code, no plan, no other files — this session ends with one decisions file. Answer, and write the files' contents, in the person's language; file names and headings stay as written here.
 
 Map the work as a **design tree**: every decision branches into decisions that hang off it. The **frontier** is every decision whose prerequisites are settled — questions you can ask now without guessing at answers you have not heard. Ask **one question per message**: the frontier question that unblocks the most, numbered, with two or three concrete choices in plain words and your recommended answer. Wait for the answer before the next.
 

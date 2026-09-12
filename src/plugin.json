@@ -1,8 +1,0 @@
-{
-  "name": {{plugin_name}},
-  "description": {{plugin_description}},
-  "version": "0.3.0",
-  "author": {
-    "name": "Zana"
-  }
-}
