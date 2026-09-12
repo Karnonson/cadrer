@@ -1,9 +1,9 @@
 ---
-name: slice
-description: Use after the spec exists and before any code. Cuts the spec into tracer-bullet slices, each saying what blocks it. Never builds.
+name: repartir
+description: Répartir — slice. Use after the spec exists and before any code. Cuts the spec into tracer-bullet slices, each saying what blocks it. Never builds.
 ---
 
-Read `builds/<NN>-<slug>/spec.md` first (a number or name given as argument picks the folder, else the only one, else ask); `idea.md` and `decisions.md` are there if a story needs its reason. If the project holds code, read it; tidying that eases the build is its own slice, before the ones it eases.
+Read `builds/<NN>-<slug>/spec.md` first (a number or name given as argument picks the folder, else the only one, else ask); `idea.md` and `decisions.md` are there if a story needs its reason. If the project holds code, read it; tidying that eases the build is its own slice, before the ones it eases. Answer, and write every file, in the language the person writes in.
 
 Cut the work into **tracer bullets**: each slice a narrow but complete path from what the person does to what they see, so that when done there is something to try. Never a layer on its own ("the database", "the window"). The first slice is the thinnest thing that runs end to end; later ones widen it. A slice may end where the next begins — a button that shows a placeholder — as long as it shows something. Each buildable in one sitting from a cold start: a few hours, one screen or one rule or one form.
 

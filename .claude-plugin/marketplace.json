@@ -6,10 +6,10 @@
   },
   "plugins": [
     {
-      "name": "workflow",
-      "source": "./plugins/workflow",
-      "description": "The six-step build loop: ideate, refine, spec, slice, implement, audit."
+      "name": "cadrer",
+      "source": "./plugins/cadrer",
+      "description": "CADRER, the six-step build loop: choisir, affiner, detailler, repartir, executer, reviser."
     }
   ],
-  "description": "The build loop taught in the AI Coding Mini-Course: six small skills, one per step, that turn a problem into a shipped app."
+  "description": "The build loop taught in Première Livraison, CADRER: six small skills, one per step, that turn a problem into a shipped app."
 }

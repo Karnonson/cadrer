@@ -1,0 +1,8 @@
+{
+  "name": "cadrer",
+  "description": "CADRER, the six-step build loop: choisir, affiner, detailler, repartir, executer, reviser. One skill per step; each writes one file into the build folder and hands it to the next.",
+  "version": "0.3.0",
+  "author": {
+    "name": "Zana"
+  }
+}

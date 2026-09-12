@@ -1,9 +1,9 @@
 ---
-name: refine
-description: Use after an Idea Frame exists and before any spec. Interviews the person one question at a time until every decision behind the idea is settled or knowingly left open, then writes the decisions down. Never builds, never specs.
+name: affiner
+description: Affiner — refine. Use after an Idea Frame exists and before any spec. Interviews the person one question at a time until every decision behind the idea is settled or knowingly left open, then writes the decisions down. Never builds, never specs.
 ---
 
-Read `builds/<NN>-<slug>/idea.md` first (a number or name given as argument picks the folder, else the only one, else ask). Its "Still open" list plus the assumption named under "Why this one" are your starting frontier — the assumption goes first, since everything rests on it. Interview the person until you share one understanding of what gets built. No code, no plan, no other files — this session ends with one decisions file.
+Read `builds/<NN>-<slug>/idea.md` first (a number or name given as argument picks the folder, else the only one, else ask). Its "Still open" list plus the assumption named under "Why this one" are your starting frontier — the assumption goes first, since everything rests on it. Interview the person until you share one understanding of what gets built. No code, no plan, no other files — this session ends with one decisions file. Answer, and write every file, in the language the person writes in.
 
 Map the work as a **design tree**: every decision branches into decisions that hang off it. The **frontier** is every decision whose prerequisites are settled — questions you can ask now without guessing at answers you have not heard. Ask **one question per message**: the frontier question that unblocks the most, numbered, with two or three concrete choices in plain words and your recommended answer. Wait for the answer before the next.
 
