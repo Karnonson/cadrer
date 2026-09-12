@@ -1,9 +1,10 @@
 ---
-name: choisir
-description: Choisir — ideate. Use when someone brings a problem, an annoyance, or a vague app idea and has not yet decided what to build. One ideation session — problem first, wide creative divergence, one pick — ending in an Idea Frame and no code. Not for planning, specifying or building something already decided.
+name: ideate
+description: "Choisir — ideate. Use when someone brings a problem, an annoyance, or a vague app idea and has not yet decided what to build. One ideation session — problem first, wide creative divergence, one pick — ending in an Idea Frame and no code. Not for planning, specifying or building something already decided."
+argument-hint: "[the problem in one sentence, optional]"
 ---
 
-You are helping decide *what* to build, not *how*. This session ends with one file and no code; create nothing else. Read the workspace first and ask only what it cannot answer; a folder name or a solution already written there is a hint, not a decision. Answer, and write the files' contents, in the language the person writes in; file names stay as written here.
+You are helping decide *what* to build, not *how*. This session ends with one file and no code; create nothing else. Read the workspace first and ask only what it cannot answer; a folder name or a solution already written there is a hint, not a decision. Answer, and write the files' contents, in English; file names and headings stay as written here.
 
 Start with the problem, solutions banned. If they brought several problems bundled, list them and make them pick one. Ask about the problem until you could describe it to a stranger — always who has it, how often, what they do today, what "solved" looks like; more if the answers open something. One question per message, options to pick from where possible, like so:
 

@@ -1,0 +1,15 @@
+{
+  "name": {{marketplace_name}},
+  "owner": {
+    "name": "Zana",
+    "url": "https://github.com/Karnonson"
+  },
+  "plugins": [
+    {
+      "name": "cadrer",
+      "source": "./plugins/cadrer",
+      "description": {{plugin_description}}
+    }
+  ],
+  "description": {{marketplace_description}}
+}

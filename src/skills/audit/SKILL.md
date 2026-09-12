@@ -1,0 +1,19 @@
+---
+name: audit
+description: {{description}}
+argument-hint: {{argument_hint}}
+---
+
+Find the slice under `builds/` (first argument picks the folder, second the slice; else the only folder, else ask): the one named, else the last with any ticked box in `{{slices_file}}`. The fixed point is the last commit before the slice's first — commits are titled by slice number in `git log --oneline`; if unclear, ask. Confirm `git diff <fixed-point>...HEAD` is not empty. Run the checks the slice's **{{m_how_to_run}}** names; their result opens the audit and never closes it — a passing check is an opening fact, not a verdict. If the slice carries a **{{m_fixed}}{{colon}}** line this is a second pass: the fixed point is the commit on the first line of `audits/<NN>.md`, so the diff is the fix alone — empty means nothing landed, say so and stop. Both axes then get only the fix-first list and that diff: did each item land, did it break anything. {{language_line}}
+
+Spawn two read-only sub-agents at once, each given the diff command and commit list, neither the other's brief:
+
+**Spec axis** gets `spec.md` and the slice's section from `{{slices_file}}`, and may read code, run the check and drive the page. Brief: for each **{{m_done_when}}** line and each line under **{{h_impl}}** or **{{h_testing}}** this slice touches — done, part done, or missing; anything built no line asked for; anything that looks done but reads wrong; against a **{{h_look}}** heading, a fresh screenshot of the slice's own screen, reached with the project's test driver. Quote the line each finding answers. Under 300 words.
+
+**Code axis** gets the smell list: a name that does not say what it holds; the same lines twice; one thing doing two jobs; a number or string standing in for a real idea; parts added for a need no line asks for; a check that reads the thing's insides instead of driving it from outside. Brief: the three that would cost the next slice most — name each, quote the lines, the fix in one sentence. Judgement calls, never violations; skip anything a linter would catch. Under 300 words.
+
+Write `audits/<NN>.md` beside `{{slices_file}}` — a second pass appends **{{h_second_pass}}**, naming the fix commit. The commit audited goes on the first line, then **Spec**, then **Code**, each report lightly cleaned into plain words; a fact you checked and found wrong, correct it and say so. Never merge or rerank across axes: a slice can pass one and fail the other.
+
+End with **Verdict**. *{{v_merge}}* when every {{m_done_when}} line holds and the seams pass. *{{v_fix}}* only for a {{m_done_when}} line missing or part done, wrong behaviour, a crash, something built no line asked for, or a seam whose checks pass while the behaviour is wrong — its missing case on the list too, shortest first. *{{v_back}}* when the slice or the spec was wrong, say which line. But a line the build could not meet as written, or a **{{m_chosen}}{{colon}}** that settled a spec contradiction, with the code right, is *{{v_merge}}*: rewrite that line in `{{slices_file}}` (and `spec.md`) to what was built and tick it, old and new under **{{h_corrected}}**. Under any verdict, code findings and what merely reads wrong go under **{{h_later}}**, never on the fix-first list; leave ticked boxes as they are — the audit records what is true. A second pass ends in {{v_merge}} or {{v_back}}, never {{v_fix}}: an item only half landed is *{{v_back}}*. After the slice's **{{m_files}}{{colon}}** line in `{{slices_file}}` — after **{{m_fixed}}{{colon}}** on a second pass — add **{{m_audit}}{{colon}}** the verdict, `audits/<NN>.md`, one line why.
+
+Show the verdict and the fix-first list, or that there is none, then stop. Never fix code, never merge: fixes go to the implement skill on the same slice, in a new window.

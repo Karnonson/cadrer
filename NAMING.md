@@ -1,9 +1,9 @@
 # Naming — CADRER
 
-Names decided 2026-09-10; the rename shipped in this repo on 2026-09-12 as plugin
-`cadrer` 0.3.0, and the French twin was dropped the same day (see the end of this
-file). This file records what the names are and what still has to happen, in
-what order.
+Names decided 2026-09-10. Built in this repo on 2026-09-12 as plugin `cadrer`
+0.3.0: English commands, and two renders of the same source, one per language,
+picked at install. This file records what the names are, what was tried and
+dropped on the way, and what still has to happen, in what order.
 
 ## The two names
 
@@ -13,19 +13,26 @@ what order.
 | Method | **CADRER** | This loop. The French verb *cadrer* — to keep something in frame — and the six steps spell it |
 
 `CADRER` is an acronym, written in caps when it names the method. The plain verb
-`cadrer` stays lowercase and free.
+`cadrer` stays lowercase and free. It names the plugin, both marketplaces
+(`cadrer`, `cadrer-en`) and, once renamed, the GitHub repo. It is the one name
+for both languages: methods keep their birth name when they cross a border
+(Kanban, Kaizen, Scrum), and the English lesson gets one sentence saying where
+the word comes from.
 
-| Letter | Step (FR) | Skill since 0.3.0 | Skill before | Writes |
+| Letter | Step (FR) | Command | Writes (FR) | Writes (EN) |
 | --- | --- | --- | --- | --- |
-| **C** | Choisir | `choisir` | `ideate` | `idea.md` |
-| **A** | Affiner | `affiner` | `refine` | `decisions.md` |
-| **D** | Détailler | `detailler` | `spec` | `spec.md` |
-| **R** | Répartir | `repartir` | `slice` | `slices.md` |
-| **E** | Exécuter | `executer` | `implement` | the code, plus ticks under the slice |
-| **R** | Réviser | `reviser` | `audit` | `audits/<NN>.md` |
+| **C** | Choisir | `/cadrer:ideate` | `idee.md` | `idea.md` |
+| **A** | Affiner | `/cadrer:refine` | `decisions.md` | `decisions.md` |
+| **D** | Détailler | `/cadrer:spec` | `spec.md` | `spec.md` |
+| **R** | Répartir | `/cadrer:slice` | `tranches.md` | `slices.md` |
+| **E** | Exécuter | `/cadrer:implement` | the code, plus ticks under the slice | same |
+| **R** | Réviser | `/cadrer:audit` | `audits/<NN>.md` | `audits/<NN>.md` |
 
-Step 1 is **choisir**, not *cadrer* — otherwise the word names both the loop and
-its first step.
+The steps carry the method's name; the commands are English in both languages,
+so there is one set of commands to teach, to cross-reference between skills,
+and to type — no accents to drop, no second vocabulary of slugs. The learner
+meets the French step name where the command is chosen: each skill's
+description in the `/` menu opens with it (*Choisir : trouver l'idée*).
 
 ## Why deploying and monitoring never join the acronym
 
@@ -42,62 +49,69 @@ covering real deployment, architecture, secrets, tests, monitoring.
 belongs to the build loop, it goes inside one of the six letters or out into the
 outer ring. CADRER is never renamed to make room.
 
-## Done 2026-09-12 — rename `workflow` → `cadrer` (plugin 0.3.0)
+## Done 2026-09-12 — `cadrer` 0.3.0: one source, two renders
 
-What changed in this repo:
+What the learner picks, and where:
 
-- `plugins/workflow/` → `plugins/cadrer/`; the six skill folders take the step
-  names without accents (table above). `plugin.json` and `marketplace.json`
-  follow; version 0.3.0, since every command name changes.
-- Each skill's front matter: `name:` is the new slug; the description opens with
-  the accented step name and the old English name — `Choisir — ideate.` — so the
-  agent and Zana both know which is which.
-- The three places a skill named another skill by its English name now use the
-  new slug: `detailler` ("if the affiner step left it"), `executer` ("run the
-  reviser skill in a new window"), `reviser` (description, and "fixes go to the
-  executer skill"). The rule from the course hub stands: name the skill, never
-  the command.
-- One line added at the end of each skill's opening paragraph: *Answer, and
-  write the files' contents, in the language the person writes in; file names
-  stay as written here.* This is what makes an English skill serve a French
-  learner (next section). The prose and headings follow the learner; the paths
-  (`idea.md`, `slices.md`…) never do, because the next skill and the lessons'
-  file checks read them by name. Not a setting: the language the person writes
-  in *is* the setting, and a project that wants otherwise says so once in its
-  `CLAUDE.md`, which the agent reads alongside the skill.
+- **The language, at install.** `cadrer@cadrer` writes and shows French,
+  `cadrer@cadrer-en` English. Same plugin name, same six commands, same bodies.
+  Not a runtime setting: Claude Code has no install-time prompt, so the choice
+  is the install line, and the two course exports each give their own.
+- **Two marketplaces because of one rule.** Claude Code keys plugins by name
+  inside a marketplace and uses the plugin name as the command prefix. Two
+  plugins named `cadrer` cannot share a marketplace, and a marketplace cannot
+  be added from a branch (`claude plugin marketplace add` takes a URL, a path
+  or a GitHub repo). So the English render is its own marketplace, `cadrer-en`,
+  in its own repo, pushed by `deploy-en.sh` the way the web page is deployed.
 
-Order of operations was **plugin first, course second**, and the second half is
-still open — see *Still to do*.
+What differs between the renders — the whole vocabulary, from `src/vocab/`:
+
+| Where | French | English |
+| --- | --- | --- |
+| `/` menu: description | *Choisir : trouver l'idée. À utiliser quand…* | *Choisir — ideate. Use when…* |
+| `/` menu: argument hint | `[numéro ou nom du dossier]`, `[dossier] [tranche]` | `[build number or name]`, `[build] [slice]` |
+| Files | `idee.md`, `tranches.md` | `idea.md`, `slices.md` |
+| `idee.md` headings | Le problème · En une phrase · Pourquoi celle-ci · Écartées · Pas encore · Encore ouvert · Jusqu'où on est allé | The problem · The one sentence · Why this one · Ruled out · Not yet · Still open · How far I took it |
+| `decisions.md` headings | Décidé · Supposé · Abandonné | Settled · Assumed · Dropped |
+| `spec.md` headings | Problème · Solution · Apparence · User stories · Décisions de réalisation · Décisions de test · Hors périmètre · Ouvert | Problem · Solution · Look · User stories · Implementation decisions · Testing decisions · Out of scope · Open |
+| Story form | En tant que <qui>, je veux <quoi>, afin de <bénéfice> | As <who>, I want <thing>, so that <benefit> |
+| Slice markers | À construire · Bloqué par · Fait quand · Non placé · Choisi · Pour lancer · Fichiers · Audit · Corrigé | What to build · Blocked by · Done when · Unplaced · Chosen · How to run · Files · Audit · Fixed |
+| Audit headings | Deuxième passe · Rectifié · Plus tard | Second pass · Corrected · Later |
+| Verdicts | fusionner · corriger d'abord · retour à la tranche | merge · fix first · back to slice |
+| Worktree branch | `tranche-<NN>` | `slice-<NN>` |
+| Language line | …in French | …in English |
+
+`builds/`, `prototypes/`, `audits/`, `spec.md`, `decisions.md` and the words
+*Spec*, *Code*, *Verdict* are the same in both. `User stories` stays English in
+French because the course already says it that way. The French colon takes its
+space (`**Fait quand :**`) through a `{{colon}}` placeholder.
+
+The language line at the end of each opening paragraph now names the language
+of the render — *Answer, and write the files' contents, in French; file names
+and headings stay as written here* — instead of following the person. The
+vocabulary fixes the headings, so the later skills and the lessons' file checks
+can read them by string; the one line makes the prose match.
+
+Bodies are English in both renders. Measured the same day with
+`tools/token_estimate.py` (o200k): the French render costs 1.05× the English
+one when a skill runs, 1.31× for the always-loaded descriptions; a fully
+translated body cost 1.27–1.41×.
+
+## Dropped 2026-09-12 — French command names
+
+For a few hours the six commands were the step names without accents
+(`/cadrer:choisir`, `detailler`, `repartir`…). Dropped the same day, before any
+push: it meant two sets of command names to teach and to cross-reference
+between skills, and typing `detailler` for *Détailler* is worse than typing
+`spec`. The step names moved into the menu descriptions, where the accents
+survive.
 
 ## Dropped 2026-09-12 — the French twin
 
-There is no `cadrer-fr`. One plugin, French names, English bodies, and the
-language line above. Why:
-
-- **The learner never reads the skill.** A skill body is a standing instruction
-  to the agent, loaded on every run. Translating it changes nothing the learner
-  sees, except the bill.
-- **French costs about a quarter more.** Measured 2026-09-12 with
-  `tools/token_estimate.py` on the six skills against a working French draft:
-  FR/EN between 1.27 and 1.41 across eight public tokenizers, ~1.27 on the
-  large-vocabulary ones current models use. Always-loaded descriptions cost a
-  little more still. Paid on every run, by every learner.
-- **What the twin was for is one line.** The point was that the agent asks its
-  questions and writes its files in French. The language line does that from an
-  English body, and it follows the learner rather than the plugin: someone
-  writing in English gets English files from the same install.
-- **One set to maintain.** Two sets meant lockstep versions and a hand-checked
-  translation on every revision, for a plugin one person keeps.
-
-What the learner does get in French: the plugin name, the six commands (typing
-them spells the method), the questions the agent asks, and every file in
-`builds/`. Both audiences install the same thing.
-
-One thing to watch: the build files are written in the learner's language, so
-the markers the later skills look for — **Done when**, **Audit:**, *merge*,
-*fix first*, *back to slice* — will be in French in a French learner's project.
-The agent reads them by meaning, not by string, and a project stays in one
-language, so this is expected to hold; the course walk will confirm it.
+A hand-translated French body for each skill. Dropped because the learner never
+reads the skill, because French bodies cost about a quarter more on every run,
+and because two hand-kept sets drift. What the twin was for — French questions,
+French files — is now the French render: same English body, French vocabulary.
 
 ### Copy for the course — why the skills are in English
 
@@ -112,35 +126,36 @@ To paste into lesson 4.2 (`tu` register, like the rest of the French export):
 > 1. **Ça coûte moins.** Pour la même consigne, le français demande environ un
 >    quart de jetons en plus — des jetons que tu paies à chaque lancement. Fais
 >    l'essai avec tes propres phrases : [Le prix du français](https://karnonson.github.io/prix-du-francais/).
-> 2. **Claude te répond en français quand même.** Chaque compétence lui demande
->    de parler, et d'écrire tes fichiers, dans la langue où tu lui écris. Tu
->    tapes `/cadrer:choisir`, tu expliques ton problème en français, et
->    `idea.md` sort en français.
-> 3. **Une seule version à entretenir.** Deux versions, c'est deux fois plus
->    d'occasions qu'elles se contredisent. Ce qui est en français, c'est ce que
->    tu tapes : les six commandes épellent la méthode.
+> 2. **Tout ce que tu vois est en français.** Tu tapes `/cadrer:ideate`, tu
+>    expliques ton problème en français, et `idee.md` sort en français, avec
+>    des titres en français. La compétence dit à Claude dans quelle langue te
+>    répondre et écrire ; c'est la version que tu as installée qui le fixe.
+> 3. **Une seule version à entretenir.** Les six compétences existent en
+>    français et en anglais, mais à partir d'une seule source : ce qui change
+>    d'une langue à l'autre, c'est le vocabulaire — les noms de fichiers, les
+>    titres, les verdicts — pas la consigne.
 
 ## Still to do
 
-1. **Copy the edits back to the hub.** `~/Desktop/skill-hub/skills` is the
-   source of truth and was not reachable from the machine that did the rename;
-   the six bodies here now differ from it by the front-matter `name:`, the
-   description prefix, the three cross-references and the language line. Apply
-   the same edits there (and decide whether the hub folders take the new names),
-   then the release check `diff -r -x example.md ~/Desktop/skill-hub/skills
-   plugins/cadrer/skills` is clean again. The course copy in
-   `~/Desktop/ai-coding-course/skills/` follows with the course pass.
-2. **The course pass.** Lessons 4.2 to 4.8 and both platform exports still say
+1. **The course pass.** Lessons 4.2 to 4.8 and both platform exports still say
    `/workflow:ideate` and `claude plugin install workflow@workflow-skills`.
-   Replace command names, install lines, `claude plugin details workflow`, and
-   add the box above to 4.2. The "Did it work?" file checks still hold: same
-   paths, same headings — in the learner's language.
-3. **Push.** The rename is committed, not pushed. Pushing is what makes
-   `cadrer@workflow-skills` installable and makes the old `workflow@workflow-skills`
-   stop resolving for new installs; do it together with the course pass, or
-   just before.
-4. **Open: the marketplace name.** `cadrer@workflow-skills` still carries the
-   old word. Renaming the GitHub repo (GitHub redirects the old name) and the
-   `name` in `marketplace.json` to `cadrer` would give `cadrer@cadrer`. Not done:
-   it changes the install line learners were given, so it belongs in the same
-   course pass if it happens at all.
+   Replace the command prefix, the install lines (French export: `cadrer@cadrer`;
+   English export: `cadrer@cadrer-en`), `claude plugin details workflow`, and add
+   the box above to 4.2. The "Did it work?" file checks change in the French
+   export: `idee.md`, `tranches.md`, and the headings and markers in the table
+   above (`Fait quand`, not `Done when`).
+2. **Rename the GitHub repo** `workflow-skills` → `cadrer` (`gh repo rename
+   cadrer`; GitHub redirects the old address). The README's install line already
+   says `Karnonson/cadrer`.
+3. **Create `Karnonson/cadrer-en`** (empty, public) and run `./deploy-en.sh`
+   after each release; the first time, right after the rename.
+4. **Push.** The rename is committed, not pushed. Pushing is what makes
+   `cadrer@cadrer` installable and makes the old `workflow@workflow-skills` stop
+   resolving for new installs; do it together with the course pass, or just
+   before.
+5. **The hub.** The course's rule says `~/Desktop/skill-hub/skills` is the
+   source of truth and this repo holds copies. That is no longer how it works:
+   `src/` here is the source, both renders are generated from it, and the
+   course copy in `~/Desktop/ai-coding-course/skills/` should be one of the
+   renders (or a pointer). Update that rule in the course's `CLAUDE.md` with
+   the course pass, and retire or re-point the hub.

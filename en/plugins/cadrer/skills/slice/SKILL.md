@@ -1,13 +1,14 @@
 ---
-name: repartir
-description: Répartir — slice. Use after the spec exists and before any code. Cuts the spec into tracer-bullet slices, each saying what blocks it. Never builds.
+name: slice
+description: "Répartir — slice. Use after the spec exists and before any code. Cuts the spec into tracer-bullet slices, each saying what blocks it. Never builds."
+argument-hint: "[build number or name]"
 ---
 
-Read `builds/<NN>-<slug>/spec.md` first (a number or name given as argument picks the folder, else the only one, else ask); `idea.md` and `decisions.md` are there if a story needs its reason. If the project holds code, read it; tidying that eases the build is its own slice, before the ones it eases. Answer, and write the files' contents, in the language the person writes in; file names stay as written here.
+Read `builds/<NN>-<slug>/spec.md` first (a number or name given as argument picks the folder, else the only one, else ask); `idea.md` and `decisions.md` are there if a story needs its reason. If the project holds code, read it; tidying that eases the build is its own slice, before the ones it eases. Answer, and write the files' contents, in English; file names and headings stay as written here.
 
 Cut the work into **tracer bullets**: each slice a narrow but complete path from what the person does to what they see, so that when done there is something to try. Never a layer on its own ("the database", "the window"). The first slice is the thinnest thing that runs end to end; later ones widen it. A slice may end where the next begins — a button that shows a placeholder — as long as it shows something. Each buildable in one sitting from a cold start: a few hours, one screen or one rule or one form.
 
-Give every slice its **blocked by**: the slices that must be done before it can start. None means it can start now. Number blocker-first.
+Give every slice its **Blocked by**: the slices that must be done before it can start. None means it can start now. Number blocker-first.
 
 Show the list — number, title, blocked by, what can be tried when done — then ask three things in plain words, each with an example from the list: any step too big to try in one go, or too small to be its own? Is the order right — could a step be done before the ones blocking it? Any two steps better as one, or one as two? End with your own answer to each, so "yes" is a real option. Wait. Fix, show again, until they say yes. That is the only check-in.
 

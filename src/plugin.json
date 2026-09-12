@@ -1,0 +1,8 @@
+{
+  "name": "cadrer",
+  "description": {{plugin_description}},
+  "version": "0.3.0",
+  "author": {
+    "name": "Zana"
+  }
+}
