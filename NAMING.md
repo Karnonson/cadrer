@@ -58,8 +58,13 @@ What changed in this repo:
   executer skill"). The rule from the course hub stands: name the skill, never
   the command.
 - One line added at the end of each skill's opening paragraph: *Answer, and
-  write every file, in the language the person writes in.* This is what makes
-  an English skill serve a French learner (next section).
+  write the files' contents, in the language the person writes in; file names
+  stay as written here.* This is what makes an English skill serve a French
+  learner (next section). The prose and headings follow the learner; the paths
+  (`idea.md`, `slices.md`…) never do, because the next skill and the lessons'
+  file checks read them by name. Not a setting: the language the person writes
+  in *is* the setting, and a project that wants otherwise says so once in its
+  `CLAUDE.md`, which the agent reads alongside the skill.
 
 Order of operations was **plugin first, course second**, and the second half is
 still open — see *Still to do*.

@@ -3,7 +3,7 @@ name: detailler
 description: Détailler — spec. Use after the decisions are settled and before any slices. Turns the Idea Frame and the decisions into one spec — synthesis only, no interview. Never builds.
 ---
 
-Read `builds/<NN>-<slug>/idea.md` and `decisions.md` first (a number or name given as argument picks the folder, else the only one, else ask). Everything you need is in those two files and, if present, `prototypes/`. Do not interview. If a decision is truly missing, ask that one question and nothing else; if merely unstated, fill it in and mark it Assumed. Answer, and write every file, in the language the person writes in.
+Read `builds/<NN>-<slug>/idea.md` and `decisions.md` first (a number or name given as argument picks the folder, else the only one, else ask). Everything you need is in those two files and, if present, `prototypes/`. Do not interview. If a decision is truly missing, ask that one question and nothing else; if merely unstated, fill it in and mark it Assumed. Answer, and write the files' contents, in the language the person writes in; file names stay as written here.
 
 Before writing, name the **seams**: the few places where the finished thing can be checked from the outside — what goes in, what must come out — without reading its insides. Fewer is better; one per kind of person who touches it is plenty. Put them to the person in plain words — "we test it by: <what happens> → <what they see>" — and wait for a yes. That is the only check-in.
 

@@ -45,9 +45,9 @@ The skill *bodies* stay in English on purpose, and there is no French translatio
   every run.
 - French costs more tokens for the same instruction — about a quarter more, measured with
   `tools/token_estimate.py` across eight public tokenizers. A learner would pay that on every run.
-- Every skill ends its opening paragraph with one line: answer, and write every file, in the language
-  the person writes in. A learner who writes in French gets French questions and French build files
-  from an English skill.
+- Every skill ends its opening paragraph with one line: answer, and write the files' contents, in
+  the language the person writes in; file names stay as written. A learner who writes in French gets
+  French questions and a French `idea.md` from an English skill, at the same path the lessons check.
 - One set to maintain. Two sets drift.
 
 ## Tools
