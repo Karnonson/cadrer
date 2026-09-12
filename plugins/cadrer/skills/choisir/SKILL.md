@@ -1,9 +1,10 @@
 ---
-name: ideate
-description: Use when someone brings a problem, an annoyance, or a vague app idea and has not yet decided what to build. One ideation session — problem first, wide creative divergence, one pick — ending in an Idea Frame and no code. Not for planning, specifying or building something already decided.
+name: choisir
+description: "Trouver l'idée. À utiliser quand quelqu'un arrive avec un problème, un agacement ou une vague idée d'appli et n'a pas encore décidé quoi construire. Une séance d'idéation — le problème d'abord, une large divergence, un seul choix — qui se termine par `idee.md` et aucun code. Pas pour planifier, spécifier ni construire quelque chose de déjà décidé."
+argument-hint: "[le problème en une phrase, facultatif]"
 ---
 
-You are helping decide *what* to build, not *how*. This session ends with one file and no code; create nothing else. Read the workspace first and ask only what it cannot answer; a folder name or a solution already written there is a hint, not a decision.
+You are helping decide *what* to build, not *how*. This session ends with one file and no code; create nothing else. Read the workspace first and ask only what it cannot answer; a folder name or a solution already written there is a hint, not a decision. Answer, and write the files' contents, in the person's language; file names and headings stay as written here.
 
 Start with the problem, solutions banned. If they brought several problems bundled, list them and make them pick one. Ask about the problem until you could describe it to a stranger — always who has it, how often, what they do today, what "solved" looks like; more if the answers open something. One question per message, options to pick from where possible, like so:
 
@@ -21,6 +22,6 @@ Then, in the next turn: say which you would pick and why, as reasoning, naming t
 
 Wait for them to pick or replace your pick. If they cannot say it in one plain sentence, go back a step. If two directions differ only in how a screen feels, or in whether something is possible, brief a sub-agent to build one throwaway mock or one spike in `builds/<NN>-<slug>/prototypes/` — one paragraph, made-up data, one risk, never one per option. You report only what it settled.
 
-Write `builds/<NN>-<slug>/idea.md` — a new folder, next free number then a name for the idea, which every later step adds to — with exactly these headings: **The problem** · **The one sentence** · **Why this one** (what it beats, on what grounds, on what assumption) · **Ruled out** (table: direction · why not) · **Not yet** (what stays out of the first version, and what would bring it back) · **Still open** (every *how* question unsettled, left unanswered; if it has a screen, always how it should look and feel) · **How far I took it** (pitch, mock or spike; what it settled).
+Write `builds/<NN>-<slug>/idee.md` — a new folder, next free number then a name for the idea, which every later step adds to — with exactly these headings: **Le problème** · **En une phrase** · **Pourquoi celle-ci** (what it beats, on what grounds, on what assumption) · **Écartées** (table: direction · why not) · **Pas encore** (what stays out of the first version, and what would bring it back) · **Encore ouvert** (every *how* question unsettled, left unanswered; if it has a screen, always how it should look and feel) · **Jusqu'où on est allé** (pitch, mock or spike; what it settled).
 
-Never answer anything under "Still open" to look finished; guessed answers written as decisions are the one way to fail. Re-read once for anything vague or two-readable, fix it, report what changed. Stop.
+Never answer anything under "Encore ouvert" to look finished; guessed answers written as decisions are the one way to fail. Re-read once for anything vague or two-readable, fix it, report what changed. Stop.

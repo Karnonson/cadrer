@@ -1,15 +1,15 @@
 {
-  "name": "workflow-skills",
+  "name": "cadrer",
   "owner": {
     "name": "Zana",
     "url": "https://github.com/Karnonson"
   },
   "plugins": [
     {
-      "name": "workflow",
-      "source": "./plugins/workflow",
-      "description": "The six-step build loop: ideate, refine, spec, slice, implement, audit."
+      "name": "cadrer",
+      "source": "./plugins/cadrer",
+      "description": "CADRER, la boucle en six étapes : choisir, affiner, détailler, répartir, exécuter, réviser. Une compétence par étape ; chacune écrit un fichier dans le dossier du chantier et le passe à la suivante."
     }
   ],
-  "description": "The build loop taught in the AI Coding Mini-Course: six small skills, one per step, that turn a problem into a shipped app."
+  "description": "CADRER, the six-step build loop taught in Première Livraison."
 }
