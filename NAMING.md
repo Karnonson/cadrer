@@ -15,7 +15,7 @@ to happen, in what order.
 
 `CADRER` is an acronym, written in caps when it names the method. The plain verb
 `cadrer` stays lowercase and free. It names the marketplace, the plugin and,
-once renamed, the GitHub repo.
+the GitHub repo.
 
 | Letter | Step | Command | Writes |
 | --- | --- | --- | --- |
@@ -148,23 +148,26 @@ To paste into lesson 4.2 (`tu` register, like the rest of the French export):
 > ajoute `"language": "French"` dans `~/.claude/settings.json`, ou choisis-le
 > dans `/config`.
 
+## Done 2026-09-12 — merged and renamed
+
+PR #1 merged into `main`, and the GitHub repo renamed `workflow-skills` →
+`cadrer` (GitHub redirects the old address). `cadrer@cadrer` now installs;
+`workflow@workflow-skills` no longer resolves.
+
 ## Still to do
 
-1. **The course pass.** Lessons 4.2 to 4.8 and the platform exports still say
+1. **Run the loop end to end** in a throwaway project, `/cadrer:choisir` through
+   `/cadrer:reviser`, first with `claude --plugin-dir plugins/cadrer`, then
+   through the real install line. Before the course pass, so the lessons copy
+   what was seen.
+2. **The course pass.** Lessons 4.2 to 4.8 and the platform exports still say
    `/workflow:ideate` and `claude plugin install workflow@workflow-skills`.
    Replace the commands (`/cadrer:choisir`…), the install line
    (`cadrer@cadrer`), `claude plugin details workflow`, and add the box above
    to 4.2. The "Did it work?" file checks change too: `idee.md`, `tranches.md`,
    and the headings and markers in the table above (`Fait quand`, not
    `Done when`). An English export, if one stays, points at the same plugin.
-2. **Rename the GitHub repo** `workflow-skills` → `cadrer` (`gh repo rename
-   cadrer`; GitHub redirects the old address). The README's install line already
-   says `Karnonson/cadrer`.
-3. **Push.** The rename is committed, not pushed. Pushing is what makes
-   `cadrer@cadrer` installable and makes the old `workflow@workflow-skills` stop
-   resolving for new installs; do it together with the course pass, or just
-   before.
-4. **The hub.** The course's rule says `~/Desktop/skill-hub/skills` is the
+3. **The hub.** The course's rule says `~/Desktop/skill-hub/skills` is the
    source of truth and this repo holds copies. That is no longer how it works:
    `plugins/cadrer/skills/` here is the source, and the course copy in
    `~/Desktop/ai-coding-course/skills/` should be a copy of it (or a pointer).

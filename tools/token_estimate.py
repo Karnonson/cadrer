@@ -2,7 +2,7 @@
 # requires-python = ">=3.10"
 # dependencies = ["tiktoken>=0.8", "tokenizers>=0.20", "huggingface_hub>=0.25"]
 # ///
-"""Estimate how many tokens a skill set costs, and compare an English set with its French twin.
+"""Estimate how many tokens a skill set costs, and compare it with the same skills in another wording.
 
 Claude's current tokenizer is not public, so the counts come from public ones —
 OpenAI's (tiktoken) and the open-weight models' (Hugging Face). Absolute counts
@@ -182,7 +182,7 @@ def ratio(fr: int, en: int) -> float:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("en", type=Path, help="English skill file or directory (or the only set to count)")
-    parser.add_argument("fr", type=Path, nargs="?", help="French twin file or directory")
+    parser.add_argument("fr", type=Path, nargs="?", help="French version: file or directory, compared against the first")
     parser.add_argument("--map", action="append", default=[], metavar="EN=FR",
                         help="pair skill folders by name; replaces the CADRER slugs (repeatable)")
     parser.add_argument("--only", help="comma-separated tokenizers: " + ", ".join([*TIKTOKEN, *HUGGINGFACE]))
