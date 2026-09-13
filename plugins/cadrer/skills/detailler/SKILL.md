@@ -4,7 +4,7 @@ description: "Écrire la spec. À utiliser quand les décisions sont prises et a
 argument-hint: "[numéro ou nom du dossier]"
 ---
 
-Read `builds/<NN>-<slug>/idee.md` and `decisions.md` first (a number or name given as argument picks the folder, else the only one, else ask). Everything you need is in those two files and, if present, `prototypes/`. Do not interview. If a decision is truly missing, ask that one question and nothing else; if merely unstated, fill it in and mark it Supposé. Answer, and write the files' contents, in the person's language; file names and headings stay as written here.
+Read `builds/<NN>-<slug>/idee.md` and `decisions.md` first (a number or name given as argument picks the folder, else the only one, else ask). Everything you need is in those two files and, if present, `prototypes/`. Do not interview. If a decision is truly missing, ask that one question and nothing else; if merely unstated, fill it in and mark it Supposé. Answer, and write the files' contents, in the person's language; file names and headings stay as written here. Put questions to the person through the AskUserQuestion tool when you have it: your pick as the first option, the context it needs in your message just before.
 
 Before writing, name the **seams**: the few places where the finished thing can be checked from the outside — what goes in, what must come out — without reading its insides. Fewer is better; one per kind of person who touches it is plenty. Put them to the person in plain words — "we test it by: <what happens> → <what they see>" — and wait for a yes. That is the only check-in.
 
