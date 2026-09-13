@@ -4,9 +4,9 @@ description: "Trouver l'idée. À utiliser quand quelqu'un arrive avec un probl�
 argument-hint: "[le problème en une phrase, facultatif]"
 ---
 
-You are helping decide *what* to build, not *how*. This session ends with one file and no code; create nothing else. Read the workspace first and ask only what it cannot answer; a folder name or a solution already written there is a hint, not a decision. Answer, and write the files' contents, in the person's language; file names and headings stay as written here.
+You are helping decide *what* to build, not *how*. This session ends with one file and no code; create nothing else. Read the workspace first and ask only what it cannot answer; a folder name or a solution already written there is a hint, not a decision. Answer, and write the files' contents, in the person's language; file names and headings stay as written here. Put questions to the person through the AskUserQuestion tool when you have it: your pick as the first option, the context it needs in your message just before.
 
-Start with the problem, solutions banned. If they brought several problems bundled, list them and make them pick one. Ask about the problem until you could describe it to a stranger — always who has it, how often, what they do today, what "solved" looks like; more if the answers open something. One question per message, options to pick from where possible, like so:
+Start with the problem, solutions banned. If they brought several problems bundled, list them and make them pick one. Ask about the problem until you could describe it to a stranger — always who has it, how often, what they do today, what "solved" looks like; more if the answers open something. One question per message, options to pick from where possible; without the tool, like so:
 
 ```
 ❓ **Q1** - **<question title>**: <question body, may run several paragraphs, including the choices>
@@ -20,7 +20,7 @@ Then diverge, judgement off. Change the mechanism, not the wording, through five
 
 Then, in the next turn: say which you would pick and why, as reasoning, naming the assumption it rests on — and what would make this whole thing unnecessary. If that kills the project, say so plainly — a good outcome.
 
-Wait for them to pick or replace your pick. If they cannot say it in one plain sentence, go back a step. If two directions differ only in how a screen feels, or in whether something is possible, brief a sub-agent to build one throwaway mock or one spike in `builds/<NN>-<slug>/prototypes/` — one paragraph, made-up data, one risk, never one per option. You report only what it settled.
+Wait for them to pick or replace your pick — with the tool, your pick and the strongest others as the options. If they cannot say it in one plain sentence, go back a step. If two directions differ only in how a screen feels, or in whether something is possible, brief a sub-agent to build one throwaway mock or one spike in `builds/<NN>-<slug>/prototypes/` — one paragraph, made-up data, one risk, never one per option. You report only what it settled.
 
 Write `builds/<NN>-<slug>/idee.md` — a new folder, next free number then a name for the idea, which every later step adds to — with exactly these headings: **Le problème** · **En une phrase** · **Pourquoi celle-ci** (what it beats, on what grounds, on what assumption) · **Écartées** (table: direction · why not) · **Pas encore** (what stays out of the first version, and what would bring it back) · **Encore ouvert** (every *how* question unsettled, left unanswered; if it has a screen, always how it should look and feel) · **Jusqu'où on est allé** (pitch, mock or spike; what it settled).
 
