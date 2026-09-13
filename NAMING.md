@@ -23,7 +23,7 @@ the GitHub repo.
 | **A** | Affiner | `/cadrer:affiner` | `decisions.md` |
 | **D** | Détailler | `/cadrer:detailler` | `spec.md` |
 | **R** | Répartir | `/cadrer:repartir` | `tranches.md` |
-| **E** | Exécuter | `/cadrer:executer` | the code, plus ticks under the slice |
+| **E** | Exécuter | `/cadrer:executer` | the code, ticks under each slice, and an audit per slice through réviser |
 | **R** | Réviser | `/cadrer:reviser` | `audits/<NN>.md` |
 
 Typing the six commands spells the method. Step 1 is **choisir**, not
@@ -68,6 +68,7 @@ The fixed French vocabulary, as it stands in the skills:
 | Audit headings | Deuxième passe · Rectifié · Plus tard |
 | Verdicts | fusionner · corriger d'abord · retour à la tranche |
 | Worktree branch | `tranche-<NN>` |
+| Screenshots, commits | `captures/<NN>-<state>.png` · `audit <NN> — <verdict>` · `parallele` |
 
 `builds/`, `prototypes/`, `audits/` and the words *Spec*, *Code*, *Verdict*
 stay as they are. `User stories` stays English because the course already says
@@ -154,9 +155,41 @@ PR #1 merged into `main`, and the GitHub repo renamed `workflow-skills` →
 `cadrer` (GitHub redirects the old address). `cadrer@cadrer` now installs;
 `workflow@workflow-skills` no longer resolves.
 
+## Done 2026-09-13 — `cadrer` 0.4.0: the build runs itself
+
+Typing `executer` then `reviser` in a new window, slice after slice, was the
+tiring part. `/cadrer:executer` now runs the loop from one window: a sub-agent
+builds each open slice (`skills/executer/construire.md` is its brief), another
+audits it by reading `skills/reviser/SKILL.md`, a third fixes when the verdict is
+*corriger d'abord*, then the next slice. It stops when nothing is open, on
+*retour à la tranche*, or on a question only the person can answer, and ends
+with a table of what to try. The main window keeps only reports and re-reads
+`tranches.md` before each slice, so a stopped run resumes. `reviser` stays a
+command: `context: fork`, so it also runs in a sub-agent when typed.
+
+- **Why the audit is read, not invoked.** Claude cannot call a `context: fork`
+  skill through the Skill tool; only a person typing it can. The loop's audit
+  sub-agent reads the same file, so there is one source.
+- **Why one slice at a time by default.** Parallel builders need one worktree
+  each and a merge back, and two unblocked slices often touch the same screen:
+  a conflict a non-developer cannot fix, to save waiting nobody watches.
+  `parallele` keeps the option; a conflict stops the run.
+- **The grilling moved up.** With the build unattended, the list of slices is
+  the last thing the person checks. `choisir` asks for the last real case, what
+  was tried, why now, and has the problem line attacked rather than approved;
+  `affiner` sweeps the branches beginners forget and tells one real day with
+  the finished thing until it holds; `detailler` reads the user stories back.
+  Each says a long interview is the job.
+
 ## Still to do
 
-1. **Run the loop end to end** in a throwaway project, `/cadrer:choisir` through
+1. **Run the loop end to end** — 0.4.0 was run headless (`claude -p`) on a
+   two-slice project: the sequential loop, nested axis sub-agents, a typed
+   `/cadrer:reviser` followed by a resumed `executer`, and `parallele` with two
+   worktrees merged back. Still unseen: that `background: false` makes a typed
+   `/cadrer:reviser` wait in an interactive window, the AskUserQuestion hand-off
+   of a returned question, and a *corriger d'abord* fix pass.
+   Then in a throwaway project, `/cadrer:choisir` through
    `/cadrer:reviser`, first with `claude --plugin-dir plugins/cadrer`, then
    through the real install line. Before the course pass, so the lessons copy
    what was seen.
