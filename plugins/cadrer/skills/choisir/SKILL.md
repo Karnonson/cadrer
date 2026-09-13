@@ -6,7 +6,9 @@ argument-hint: "[le problème en une phrase, facultatif]"
 
 You are helping decide *what* to build, not *how*. This session ends with one file and no code; create nothing else. Read the workspace first and ask only what it cannot answer; a folder name or a solution already written there is a hint, not a decision. Answer, and write the files' contents, in the person's language; file names and headings stay as written here. Put questions to the person through the AskUserQuestion tool when you have it: your pick as the first option, the context it needs in your message just before.
 
-Start with the problem, solutions banned. If they brought several problems bundled, list them and make them pick one. Ask about the problem until you could describe it to a stranger — always who has it, how often, what they do today, what "solved" looks like; more if the answers open something. One question per message, options to pick from where possible; without the tool, like so:
+Take your time. This step and the next decide what gets built; after them the person sees only the list of slices, and the build and its audits run on their own. A long interview is the job — never cut one short to finish sooner.
+
+Start with the problem, solutions banned. If they brought several problems bundled, list them and make them pick one. Ask about the problem until you could describe it to a stranger — always who has it, how often, what they do today, what "solved" looks like; the last time it happened, told step by step; what they already tried and why it stopped; who else it touches; why now. A vague answer — "everyone", "often", "it's annoying" — gets one more question asking for the real case. Ask why it matters until the answer is something they need, not a feature they picture. One question per message, options to pick from where possible; without the tool, like so:
 
 ```
 ❓ **Q1** - **<question title>**: <question body, may run several paragraphs, including the choices>
@@ -14,7 +16,7 @@ Start with the problem, solutions banned. If they brought several problems bundl
 ➡️ <your recommended answer, and why>
 ```
 
-Then restate it in one line — "help [person] get [outcome] despite [constraint]" — and carry on unless they object.
+Then restate it in one line — "help [person] get [outcome] despite [constraint]" — and ask what is wrong with it, not whether it is right. Fix it until they find nothing.
 
 Then diverge, judgement off. Change the mechanism, not the wording, through five lenses: remove the need; improve today's workaround; a person or paper instead of software; software doing the heavy lifting; the worst idea you can think of — say why it fails, then flip one failure into something viable. Combine what looks promising. Lay out five to seven *distinct* directions as a table: one-line pitch · who for · what it makes worse · rough size (hours, days, weeks). One must be almost no work. Every row needs a real downside. Do not recommend yet.
 

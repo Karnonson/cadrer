@@ -10,10 +10,17 @@ names and headings, and Claude answering and writing in the language you write t
 | **A**ffiner | `/cadrer:affiner` | `decisions.md` |
 | **D**étailler | `/cadrer:detailler` | `spec.md` |
 | **R**épartir | `/cadrer:repartir` | `tranches.md` |
-| **E**xécuter | `/cadrer:executer` | the code, plus ticks under the slice |
+| **E**xécuter | `/cadrer:executer` | the code, ticks under each slice, and an audit per slice through réviser |
 | **R**éviser | `/cadrer:reviser` | `audits/<NN>.md` |
 
 All six write into one folder per idea, `builds/<NN>-<slug>/`, and each reads what the last one left.
+`/cadrer:executer` runs the rest on its own: each open slice is built by one sub-agent, audited by
+another following `reviser`, fixed and audited again if the audit asks, then the next — until none is
+left or a decision is the person's. `/cadrer:executer <dossier> <NN>` does one slice; `parallele` builds
+open slices at once, one git worktree each, merged back when audited. A full run spends tokens on every
+slice, three to five sub-agents each. `/cadrer:reviser` still runs alone, in its own sub-agent, on a
+slice built by hand.
+
 Command names carry no accents — a skill name is lowercase letters, digits and hyphens — so you type
 `detailler`, `repartir`, `executer`, `reviser`.
 
