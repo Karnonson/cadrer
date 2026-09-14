@@ -233,6 +233,25 @@ before the build had asked, and they put every slice online.
   and the fix diff, re-running what the fixer said it ran. A typed
   `/cadrer:reviser` keeps both axis sub-agents.
 
+Measured the same day, headless, on one two-slice fixture (a to-do command
+plus a daily send to a webhook, its address a secret in `.env.local`, a local
+stand-in for the webhook, and one question the spec left open), run once with
+0.4.0 and once with 0.5.0. Weighted tokens from the session files:
+
+| | 0.4.0 | 0.5.0 |
+| --- | --- | --- |
+| First audit, slice 01 · 02 | 109k · 185k (1.7× its build) | 67k · 96k (0.5–0.7×) |
+| Second pass | 172k | 62k · 81k |
+| Code check | in every audit | 55k, once |
+| All auditing, share of run | 56% | 35% |
+| Outcome | 01 *fusionner*; 02 *retour à la tranche* after a fix | both *fusionner* after one fix each |
+
+0.5.0 cost more in total (1.03M against 0.83M; $7.22 against $5.85 reported)
+because it did two fix cycles and finished, where 0.4.0 stopped after one. Both
+fixes fixed a crash, not an answer. The builders stopped for nothing, wrote two
+`a-trancher.md` entries, asked at the end, and nothing went online. One run
+each, so read the shares, not the totals.
+
 ## Still to do
 
 1. **Run the loop end to end** — 0.4.0 was run headless (`claude -p`) on a
