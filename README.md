@@ -7,19 +7,25 @@ names and headings, and Claude answering and writing in the language you write t
 | Step | Command | Writes |
 | --- | --- | --- |
 | **C**hoisir | `/cadrer:choisir` | `idee.md` |
-| **A**ffiner | `/cadrer:affiner` | `decisions.md` |
+| **A**ffiner | `/cadrer:affiner` | `decisions.md`, `architecture.md` |
 | **D**étailler | `/cadrer:detailler` | `spec.md` |
 | **R**épartir | `/cadrer:repartir` | `tranches.md` |
 | **E**xécuter | `/cadrer:executer` | the code, ticks under each slice, and an audit per slice through réviser |
 | **R**éviser | `/cadrer:reviser` | `audits/<NN>.md` |
 
 All six write into one folder per idea, `builds/<NN>-<slug>/`, and each reads what the last one left.
-`/cadrer:executer` runs the rest on its own: each open slice is built by one sub-agent, audited by
-another following `reviser`, fixed and audited again if the audit asks, then the next — until none is
-left or a decision is the person's. `/cadrer:executer <dossier> <NN>` does one slice; `parallele` builds
-open slices at once, one git worktree each, merged back when audited. A full run spends tokens on every
-slice, three to five sub-agents each. `/cadrer:reviser` still runs alone, in its own sub-agent, on a
-slice built by hand.
+`affiner` settles what gets built, then where it runs, what it costs and what the person prepares by
+hand, in `architecture.md`. `/cadrer:executer` checks those chores are done, then runs the rest on its
+own, on the computer, never online: each open slice is built by one sub-agent, audited by another
+following `reviser`, fixed and audited again if the audit finds a defect, then the next. A choice only
+the person can make does not stop it: the build takes its pick and writes the question into
+`a-trancher.md`, asked at the end. One code review covers the whole run, in `audits/code.md`.
+`/cadrer:executer <dossier> <NN>` does one slice; `parallele` builds open slices at once, one git
+worktree each, merged back when audited. A full run spends tokens on every slice, two to four
+sub-agents each. `/cadrer:reviser` still runs alone, in its own sub-agent with two reviewers of its
+own, on a slice built by hand.
+
+Putting the result online will be `/cadrer:livrer`, a command outside the six letters (not built yet).
 
 Command names carry no accents — a skill name is lowercase letters, digits and hyphens — so you type
 `detailler`, `repartir`, `executer`, `reviser`.
