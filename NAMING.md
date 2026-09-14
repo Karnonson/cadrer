@@ -25,6 +25,7 @@ the GitHub repo.
 | **R** | Répartir | `/cadrer:repartir` | `tranches.md` |
 | **E** | Exécuter | `/cadrer:executer` | the code, ticks under each slice, an audit per slice through réviser, `a-trancher.md` |
 | **R** | Réviser | `/cadrer:reviser` | `audits/<NN>.md` |
+| — | Livrer | `/cadrer:livrer` | the build online, `livraison.md` |
 
 Typing the six commands spells the method. Step 1 is **choisir**, not
 *cadrer* — otherwise the word names both the loop and its first step.
@@ -43,8 +44,8 @@ too many. So:
 
 - **The acronym stays the build loop.** Six letters, six steps, run per idea.
 - **What happens once or never stops is a command with no letter**:
-  `/cadrer:livrer` puts the finished loop online (planned, its own PR; section
-  05 of the course, until now a lesson, becomes it). Monitoring, if it ever is
+  `/cadrer:livrer` puts the finished loop online (built in 0.6.0; section 05
+  of the course, until now a lesson, becomes it). Monitoring, if it ever is
   a command, joins it the same way.
 - **Architecture, secrets and tests are not commands.** They are topics inside
   the steps: `affiner` settles the architecture and writes `architecture.md`,
@@ -72,11 +73,12 @@ The fixed French vocabulary, as it stands in the skills:
 
 | Where | Words |
 | --- | --- |
-| Files | `idee.md`, `decisions.md`, `architecture.md`, `spec.md`, `tranches.md`, `a-trancher.md`, `audits/<NN>.md`, `audits/code.md` |
+| Files | `idee.md`, `decisions.md`, `architecture.md`, `spec.md`, `tranches.md`, `a-trancher.md`, `audits/<NN>.md`, `audits/code.md`, `livraison.md` |
 | `idee.md` headings | Le problème · En une phrase · Pourquoi celle-ci · Écartées · Pas encore · Encore ouvert · Jusqu'où on est allé |
 | `decisions.md` headings | Décidé · Supposé · Abandonné |
 | `architecture.md` headings | Pièces · Trajet · Données · Comptes et secrets · Coût · En local · À faire à la main · Écarté |
 | Chore markers | *avant la construction* · *avant la livraison* |
+| `livraison.md` headings | En ligne · Mise en ligne · Vérifié en ligne · Si ça casse · Reste à faire |
 | `a-trancher.md` markers | Question · Choix · En attendant · Réponse |
 | `spec.md` headings | Problème · Solution · Apparence · User stories · Décisions de réalisation · Décisions de test · Hors périmètre · Ouvert |
 | Story form | En tant que <qui>, je veux <quoi>, afin de <bénéfice> |
@@ -84,7 +86,7 @@ The fixed French vocabulary, as it stands in the skills:
 | Audit headings | Deuxième passe · Rectifié · Plus tard |
 | Verdicts | fusionner · corriger d'abord · retour à la tranche |
 | Worktree branch | `tranche-<NN>` |
-| Screenshots, commits | `captures/<NN>-<state>.png` · `audit <NN> — <verdict>` · `audit code` · `parallele` |
+| Screenshots, commits | `captures/<NN>-<state>.png` · `captures/livraison-<state>.png` · `audit <NN> — <verdict>` · `audit code` · `À faire à la main : <what>` · `livraison — <address>` · `parallele` |
 
 `builds/`, `prototypes/`, `audits/` and the words *Spec*, *Code*, *Verdict*
 stay as they are. `User stories` stays English because the course already says
@@ -252,6 +254,44 @@ fixes fixed a crash, not an answer. The builders stopped for nothing, wrote two
 `a-trancher.md` entries, asked at the end, and nothing went online. One run
 each, so read the shares, not the totals.
 
+## Done 2026-09-13 — `cadrer` 0.6.0: `livrer`
+
+The loop never deploys, so something has to. `/cadrer:livrer` runs in the main
+window with the person there, because this is where accounts, cards and real
+messages come in. In order: it checks every slice is *fusionner* and every
+a-trancher answer is placed, and re-runs each **Pour lancer** without touching
+the person's data; it asks the *avant la livraison* chores, has the person type
+every secret themselves (`! ` or the provider's page), and checks each without
+showing a value — by name, or as "no longer the local stand-in"; it shows a
+table of each action, what it creates or sends out there, the cost and the
+undo, and waits for a yes (money gets its own); it goes online, follows the
+architecture's **Trajet** on the real address, asks the person to look at what
+only they can see, and writes `livraison.md`. Something broken online goes
+under **Reste à faire** for `repartir`, never into a fix here.
+
+Tested the same day, before writing it, in two runs with Claude playing a
+non-developer through messages:
+
+- **`affiner` on a made-up project** — a yoga teacher's class bookings, online
+  with the computer off, e-mails, an address of her own. 24 questions: 19 on
+  what gets built (each answer without a reason was asked why), the day told
+  and corrected once, then three named setups with prices looked up that day,
+  the path of one booking through the parts, and the renewal of the paid
+  address. `architecture.md` came out with the eight headings, secrets by name
+  only, and twelve chores split two *avant la construction*, ten *avant la
+  livraison*. One flaw: while writing, it found a fact the person had approved
+  was wrong (who forwards replies once the address points elsewhere) and wrote
+  the fix as *Supposé* instead of asking. `affiner` now asks first.
+- **`livrer` on the 0.5.0 fixture**, dry: nothing was allowed to leave the
+  computer, and the person said "done" without doing the chore. It caught the
+  address still being the local stand-in without printing it, accepted the
+  real-looking one, showed a three-row plan with the one real message as the
+  last row, and on "not today" stopped with nothing written. Two fixes came
+  from it: re-running **Pour lancer** created and deleted the person's data
+  file, and a tick left uncommitted would fail the next run's clean-tree
+  check. Still unseen: a real deploy, a paid row, the check online, and
+  `livraison.md` itself.
+
 ## Still to do
 
 1. **Run the loop end to end** — 0.4.0 was run headless (`claude -p`) on a
@@ -264,17 +304,14 @@ each, so read the shares, not the totals.
    `/cadrer:reviser`, first with `claude --plugin-dir plugins/cadrer`, then
    through the real install line. Before the course pass, so the lessons copy
    what was seen.
-2. **`/cadrer:livrer`.** Reads `architecture.md`, asks for the *avant la
-   livraison* chores, puts the finished loop online and checks it there. Its
-   own PR, after 0.5.0 has run on a real project.
-3. **The course pass.** Lessons 4.2 to 4.8 and the platform exports still say
+2. **The course pass.** Lessons 4.2 to 4.8 and the platform exports still say
    `/workflow:ideate` and `claude plugin install workflow@workflow-skills`.
    Replace the commands (`/cadrer:choisir`…), the install line
    (`cadrer@cadrer`), `claude plugin details workflow`, and add the box above
    to 4.2. The "Did it work?" file checks change too: `idee.md`, `tranches.md`,
    and the headings and markers in the table above (`Fait quand`, not
    `Done when`). An English export, if one stays, points at the same plugin.
-4. **The hub.** The course's rule says `~/Desktop/skill-hub/skills` is the
+3. **The hub.** The course's rule says `~/Desktop/skill-hub/skills` is the
    source of truth and this repo holds copies. That is no longer how it works:
    `plugins/cadrer/skills/` here is the source, and the course copy in
    `~/Desktop/ai-coding-course/skills/` should be a copy of it (or a pointer).

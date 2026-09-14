@@ -8,7 +8,7 @@
     {
       "name": "cadrer",
       "source": "./plugins/cadrer",
-      "description": "CADRER, la boucle en six étapes : choisir, affiner, détailler, répartir, exécuter, réviser. Une compétence par étape ; chacune écrit un fichier dans le dossier du chantier et le passe à la suivante."
+      "description": "CADRER, la boucle en six étapes : choisir, affiner, détailler, répartir, exécuter, réviser, puis livrer pour mettre en ligne. Une compétence par étape ; chacune écrit un fichier dans le dossier du chantier et le passe à la suivante."
     }
   ],
   "description": "CADRER, the six-step build loop taught in Première Livraison."

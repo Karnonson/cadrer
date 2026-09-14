@@ -25,7 +25,12 @@ worktree each, merged back when audited. A full run spends tokens on every slice
 sub-agents each. `/cadrer:reviser` still runs alone, in its own sub-agent with two reviewers of its
 own, on a slice built by hand.
 
-Putting the result online will be `/cadrer:livrer`, a command outside the six letters (not built yet).
+Putting it online is `/cadrer:livrer`, a command outside the six letters, run with the person at the
+keyboard once every slice is audited *fusionner*. It asks for the *avant la livraison* chores, where
+secrets are typed by the person and never shown, then shows a table of what it will create, pay or
+send and how to undo each, and waits for a yes. It then puts the build where `architecture.md` says,
+follows the architecture's **Trajet** on the real address, and writes `livraison.md`: the address, how
+to do it again, what was seen online, how to go back, and what is left for `repartir`.
 
 Command names carry no accents — a skill name is lowercase letters, digits and hyphens — so you type
 `detailler`, `repartir`, `executer`, `reviser`.

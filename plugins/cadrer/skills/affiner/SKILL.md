@@ -41,4 +41,4 @@ Done when the frontier is empty, the day holds and the path holds. Then write tw
 - **À faire à la main** — their checklist, `- [ ]` per item, what to do and where, each marked *avant la construction* or *avant la livraison*.
 - **Écarté** — the setups not chosen, and why.
 
-Re-read both once for anything vague or two-readable, or said differently in the two files, fix in place, report what changed. Stop; do not offer to spec or build.
+Re-read both once for anything vague or two-readable, or said differently in the two files, fix in place, report what changed. A fact that turns out different from what the person approved — a part, a cost, a chore — goes back to them as a question before it is written. Stop; do not offer to spec or build.
