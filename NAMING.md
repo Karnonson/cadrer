@@ -273,9 +273,9 @@ Tested the same day, before writing it, in two runs with Claude playing a
 non-developer through messages:
 
 - **`affiner` on a made-up project** — a yoga teacher's class bookings, online
-  with the computer off, e-mails, an address of her own. 24 questions: 19 on
-  what gets built (each answer without a reason was asked why), the day told
-  and corrected once, then three named setups with prices looked up that day,
+  with the computer off, e-mails, a web address in the teacher's name. 25 questions:
+  18 on what gets built (an answer without a reason was asked why), the day
+  told and corrected once, reasons confirmed before writing, then three named setups with prices looked up that day,
   the path of one booking through the parts, and the renewal of the paid
   address. `architecture.md` came out with the eight headings, secrets by name
   only, and twelve chores split two *avant la construction*, ten *avant la
@@ -301,7 +301,8 @@ non-developer through messages:
    `/cadrer:reviser` wait in an interactive window, the AskUserQuestion hand-off
    of a returned question, and a *corriger d'abord* fix pass.
    Then in a throwaway project, `/cadrer:choisir` through
-   `/cadrer:reviser`, first with `claude --plugin-dir plugins/cadrer`, then
+   `/cadrer:livrer` on a real free host, first with
+   `claude --plugin-dir plugins/cadrer`, then
    through the real install line. Before the course pass, so the lessons copy
    what was seen.
 2. **The course pass.** Lessons 4.2 to 4.8 and the platform exports still say
