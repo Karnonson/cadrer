@@ -8,7 +8,7 @@ Read `builds/<NN>-<slug>/idee.md`, `decisions.md` and `architecture.md` first (a
 
 Before writing, name the **seams**: the few places where the finished thing can be checked from the outside — what goes in, what must come out — without reading its insides. Fewer is better; one per kind of person who touches it is plenty. Each must be checkable on their computer, the way **En local** in `architecture.md` says. Put them to the person in plain words — "we test it by: <what happens> → <what they see>" — and wait for a yes. Then draft the user stories and read them back as plain sentences, grouped by who, and ask which is wrong, missing, or not wanted; fix until they find none — a new behaviour they bring is a missing decision, so ask it, one question at a time. Those are the only two check-ins: after this file they see only the list of slices, and the build runs on its own.
 
-Then write `spec.md` beside the other two with exactly these headings:
+Then write `spec.md` beside the other three with exactly these headings:
 
 - **Problème** — from their side, two or three sentences, lifted from `idee.md`.
 - **Solution** — what they will see and do. No technology words.

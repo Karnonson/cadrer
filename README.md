@@ -1,102 +1,111 @@
 # cadrer
 
-**CADRER** is the six-step build loop taught in the free course **Première Livraison**. This repo is
-its Claude Code marketplace, with the loop as one plugin, `cadrer`: six French commands, French file
-names and headings, and Claude answering and writing in the language you write to it in.
+**Français** · [English](README.en.md)
 
-| Step | Command | Writes |
+**CADRER** est la boucle de construction en six étapes enseignée dans le cours gratuit **Première
+Livraison**. Ce dépôt est sa marketplace Claude Code, avec la boucle en un seul plugin, `cadrer` : six
+commandes en français, des noms de fichiers et des titres en français, et Claude qui répond et écrit
+dans la langue dans laquelle vous lui écrivez.
+
+| Étape | Commande | Écrit |
 | --- | --- | --- |
 | **C**hoisir | `/cadrer:choisir` | `idee.md` |
 | **A**ffiner | `/cadrer:affiner` | `decisions.md`, `architecture.md` |
 | **D**étailler | `/cadrer:detailler` | `spec.md` |
 | **R**épartir | `/cadrer:repartir` | `tranches.md` |
-| **E**xécuter | `/cadrer:executer` | the code, ticks under each slice, and an audit per slice through réviser |
+| **E**xécuter | `/cadrer:executer` | le code, les cases cochées sous chaque tranche, un audit par tranche via réviser, `a-trancher.md` |
 | **R**éviser | `/cadrer:reviser` | `audits/<NN>.md` |
+| — Livrer | `/cadrer:livrer` | le projet en ligne, `livraison.md` |
 
-All six write into one folder per idea, `builds/<NN>-<slug>/`, and each reads what the last one left.
-`affiner` settles what gets built, then where it runs, what it costs and what the person prepares by
-hand, in `architecture.md`. `/cadrer:executer` checks those chores are done, then runs the rest on its
-own, on the computer, never online: each open slice is built by one sub-agent, audited by another
-following `reviser`, fixed and audited again if the audit finds a defect, then the next. A choice only
-the person can make does not stop it: the build takes its pick and writes the question into
-`a-trancher.md`, asked at the end. One code review covers the whole run, in `audits/code.md`.
-`/cadrer:executer <dossier> <NN>` does one slice; `parallele` builds open slices at once, one git
-worktree each, merged back when audited. A full run spends tokens on every slice, two to four
-sub-agents each. `/cadrer:reviser` still runs alone, in its own sub-agent with two reviewers of its
-own, on a slice built by hand.
+Les six écrivent dans un dossier par idée, `builds/<NN>-<slug>/`, et chacune lit ce que la précédente a
+laissé. `affiner` tranche ce qu'on construit, puis où ça tourne, ce que ça coûte et ce que la personne
+prépare à la main, dans `architecture.md`. `/cadrer:executer` vérifie que ces tâches sont faites, puis
+enchaîne seul le reste, sur l'ordinateur, jamais en ligne : chaque tranche ouverte est construite par un
+sous-agent, auditée par un autre qui suit `reviser`, corrigée puis auditée à nouveau si l'audit trouve un
+défaut, puis la suivante. Un choix que seule la personne peut faire ne l'arrête pas : la construction
+prend son option et écrit la question dans `a-trancher.md`, posée à la fin. Une seule revue du code
+couvre tout le passage, dans `audits/code.md`. `/cadrer:executer <dossier> <NN>` fait une seule
+tranche ; `parallele` construit les tranches ouvertes en même temps, un worktree git chacune, fusionné
+une fois audité. Un passage complet consomme des tokens sur chaque tranche, deux à quatre sous-agents
+chacune. `/cadrer:reviser` tourne encore seul, dans son propre sous-agent avec ses deux relecteurs, sur
+une tranche construite à la main.
 
-Putting it online is `/cadrer:livrer`, a command outside the six letters, run with the person at the
-keyboard once every slice is audited *fusionner*. It asks for the *avant la livraison* chores, where
-secrets are typed by the person and never shown, then shows a table of what it will create, pay or
-send and how to undo each, and waits for a yes. It then puts the build where `architecture.md` says,
-follows the architecture's **Trajet** on the real address, and writes `livraison.md`: the address, how
-to do it again, what was seen online, how to go back, and what is left for `repartir`.
+La mise en ligne, c'est `/cadrer:livrer`, une commande en dehors des six lettres, lancée avec la
+personne au clavier une fois chaque tranche auditée *fusionner*. Elle demande les tâches *avant la
+livraison* — les secrets sont tapés par la personne et jamais affichés —, puis montre un tableau de ce
+qu'elle va créer, payer ou envoyer et comment annuler chaque action, et attend un oui. Elle met ensuite
+le projet là où `architecture.md` le dit, refait le **Trajet** de l'architecture sur la vraie adresse, et
+écrit `livraison.md` : l'adresse, comment recommencer, ce qui a été vu en ligne, comment revenir en
+arrière, et ce qui reste pour `repartir`.
 
-Command names carry no accents — a skill name is lowercase letters, digits and hyphens — so you type
-`detailler`, `repartir`, `executer`, `reviser`.
+Les noms de commandes n'ont pas d'accents — un nom de compétence ne contient que des minuscules, des
+chiffres et des tirets — donc on tape `detailler`, `repartir`, `executer`, `reviser`.
 
-## Install
+## Installer
 
-In a terminal, standing in the project you want the loop in:
+Dans un terminal, placé dans le projet où vous voulez la boucle :
 
 ```
 claude plugin marketplace add Karnonson/cadrer
 claude plugin install cadrer@cadrer --scope project
 ```
 
-`--scope project` switches the plugin on for that folder only (it writes `.claude/settings.json`
-there); leave it off and it switches on for every project on your machine. Then `/cadrer:choisir` and
-the rest answer by name in any Claude Code window opened in that folder. `claude plugin details
-cadrer` shows what it costs you per session; `claude plugin uninstall cadrer --scope project` removes
-it.
+`--scope project` active le plugin pour ce dossier seulement (il écrit `.claude/settings.json` dans ce
+dossier) ; sans cette option, il s'active pour tous les projets de votre machine. Ensuite
+`/cadrer:choisir` et les autres répondent par leur nom dans toute fenêtre Claude Code ouverte dans ce
+dossier. `claude plugin details cadrer` montre ce qu'il vous coûte par session ; `claude plugin
+uninstall cadrer --scope project` le retire.
 
-Before 0.3.0 the plugin was called `workflow` (`/workflow:ideate`, from the marketplace
-`workflow-skills`). Uninstall that one and install `cadrer`. Build folders started with `workflow`
-use the English file names (`idea.md`, `slices.md`), so start new builds with `cadrer`.
+Avant la 0.3.0, le plugin s'appelait `workflow` (`/workflow:ideate`, depuis la marketplace
+`workflow-skills`). Désinstallez-le et installez `cadrer`. Les dossiers de construction commencés avec
+`workflow` utilisent les noms de fichiers anglais (`idea.md`, `slices.md`) : commencez les nouveaux avec
+`cadrer`.
 
-## Languages
+## Langues
 
-Three layers, three readers:
+Trois couches, trois lecteurs :
 
-- **What the learner sees is French.** Commands, `/` menu descriptions and argument hints, file names,
-  the headings inside each file, the markers the later steps look for (`Fait quand`, `Bloqué par`…)
-  and the verdicts (`fusionner`, `corriger d'abord`, `retour à la tranche`). These are fixed: the
-  next skill and the course's file checks read them by string.
-- **What Claude writes follows the person.** Each skill says: answer, and write the files' contents,
-  in the person's language; file names and headings stay as written here. A learner who writes in
-  French gets French. To pin it for every window, set `"language": "French"` in
-  `~/.claude/settings.json`, or pick it in `/config`.
-- **What only Claude reads is English.** The skill bodies. A skill is read by the agent, never by the
-  learner, and French costs more tokens for the same instruction.
+- **Ce que voit l'apprenant est en français.** Les commandes, les descriptions et les indications
+  d'arguments du menu `/`, les noms de fichiers, les titres dans chaque fichier, les repères que les
+  étapes suivantes cherchent (`Fait quand`, `Bloqué par`…) et les verdicts (`fusionner`, `corriger
+  d'abord`, `retour à la tranche`). Ils sont fixes : la compétence suivante et les vérifications de
+  fichiers du cours les lisent mot pour mot.
+- **Ce qu'écrit Claude suit la personne.** Chaque compétence dit : répondre, et écrire le contenu des
+  fichiers, dans la langue de la personne ; les noms de fichiers et les titres restent tels qu'écrits.
+  Un apprenant qui écrit en français obtient du français. Pour le fixer dans toutes les fenêtres,
+  mettez `"language": "French"` dans `~/.claude/settings.json`, ou choisissez-le dans `/config`.
+- **Ce que seul Claude lit est en anglais.** Le corps des compétences. Une compétence est lue par
+  l'agent, jamais par l'apprenant, et le français coûte plus de tokens pour la même instruction.
 
-Measured with `tools/token_estimate.py` on 2026-09-12, o200k tokenizer, against an English-vocabulary
-render of the same bodies (commit `f9eb4f1`):
+Mesuré avec `tools/token_estimate.py` le 2026-09-12, tokenizer o200k, contre une version des mêmes
+corps avec le vocabulaire en anglais (commit `f9eb4f1`) :
 
-| | English vocabulary | `cadrer` |
+| | Vocabulaire anglais | `cadrer` |
 | --- | --- | --- |
-| Six skills, loaded when one runs | 4,448 | 4,657 (1.05×) |
-| Six descriptions, always loaded | 318 | 416 (1.31×) |
+| Six compétences, chargées quand l'une tourne | 4 448 | 4 657 (1,05×) |
+| Six descriptions, toujours chargées | 318 | 416 (1,31×) |
 
-A fully translated French body was 1.27–1.41× instead. `NAMING.md` records the decisions.
+Un corps entièrement traduit en français donnait 1,27–1,41× à la place.
 
-The skills under `plugins/cadrer/skills/` are the source. Edit them by hand; `claude plugin validate
-plugins/cadrer` checks the manifest.
+Les compétences sous `plugins/cadrer/skills/` sont la source. Modifiez-les à la main ; `claude plugin
+validate plugins/cadrer` vérifie le manifeste.
 
-## Tools
+## Outils
 
-`tools/token_estimate.py` counts what a skill set costs in tokens, and can compare two sets (paired
-through the CADRER slugs, or `--map EN=FR`). Claude's tokenizer is not public, so it counts with public
-ones — OpenAI's, Llama 3, Qwen 3, DeepSeek V3, Mistral Nemo, Gemma 3 — and reports the FR/EN ratio
-across them; with `ANTHROPIC_API_KEY` set it adds Claude's exact count from `count_tokens`.
+`tools/token_estimate.py` compte ce qu'un ensemble de compétences coûte en tokens, et peut comparer
+deux ensembles (appariés par les slugs CADRER, ou `--map EN=FR`). Le tokenizer de Claude n'est pas
+public, donc il compte avec des tokenizers publics — celui d'OpenAI, Llama 3, Qwen 3, DeepSeek V3,
+Mistral Nemo, Gemma 3 — et donne le ratio FR/EN sur l'ensemble ; avec `ANTHROPIC_API_KEY` défini, il
+ajoute le compte exact de Claude via `count_tokens`.
 
 ```
-uv run tools/token_estimate.py plugins/cadrer/skills              # one set
-uv run tools/token_estimate.py path/to/en/skills plugins/cadrer/skills   # EN against FR
+uv run tools/token_estimate.py plugins/cadrer/skills              # un ensemble
+uv run tools/token_estimate.py path/to/en/skills plugins/cadrer/skills   # EN contre FR
 ```
 
-`--detail o200k` breaks it down per skill, `--json` prints the numbers. The public page for
-non-technical readers, *Le prix du français*, lives in its own repo, `~/Desktop/prix-du-francais`.
+`--detail o200k` détaille par compétence, `--json` affiche les chiffres. La page publique pour les
+lecteurs non techniques, *Le prix du français*, vit dans son propre dépôt, [Karnonson/prix-du-francais](https://github.com/Karnonson/prix-du-francais).
 
-## Credits
+## Crédits
 
-`affiner` is adapted from Matt Pocock's `grilling` (MIT) — github.com/mattpocock/skills.
+`affiner` est adapté de `grilling` de Matt Pocock (MIT) — github.com/mattpocock/skills.
