@@ -77,7 +77,7 @@ The fixed French vocabulary, as it stands in the skills:
 | `idee.md` headings | Le problème · En une phrase · Pourquoi celle-ci · Écartées · Pas encore · Encore ouvert · Jusqu'où on est allé |
 | `decisions.md` headings | Décidé · Supposé · Abandonné |
 | `architecture.md` headings | Pièces · Trajet · Données · Comptes et secrets · Coût · En local · À faire à la main · Écarté |
-| Chore markers | *avant la construction* · *avant la livraison* |
+| Chore markers | *avant la construction* · *avant la livraison* · *confirmé par la personne* |
 | `livraison.md` headings | En ligne · Mise en ligne · Vérifié en ligne · Si ça casse · Reste à faire (lines marked *à la main* stay the person's) |
 | `a-trancher.md` markers | Question · Choix · En attendant · Réponse |
 | `spec.md` headings | Problème · Solution · Apparence · User stories · Décisions de réalisation · Décisions de test · Hors périmètre · Ouvert |
@@ -293,8 +293,8 @@ non-developer through messages:
   check. Still unseen: a real deploy, a paid row, the check online, and
   `livraison.md` itself.
 
-Codex reviewed PRs #4 and #5 twice on 2026-09-14; all thirteen findings were
-fixed. `executer` now stops without `architecture.md`, commits its ticked
+Codex reviewed PRs #4 and #5 three times on 2026-09-14; all sixteen findings
+were fixed, then reviews stopped — the rest waits for a real deploy. `executer` now stops without `architecture.md`, commits its ticked
 chores, names the folder to the code review and runs it whenever a slice was
 built, resolves a merge whose only conflict is `a-trancher.md` by keeping both
 entries, and stops on a secret committed by a build — the person changes it
@@ -302,7 +302,10 @@ where it was issued, and the branch is not pushed until the commit leaves
 history. `livrer` keeps secrets out of `! `, gives a paid chore its own yes,
 commits an answer it collects, runs the online check once, and, when a row
 fails, writes and commits `livraison.md` with what went out, so the next run
-redoes only what is not still there. Chores left open go under **Reste à
+redoes only what is not still there. Cutting a part during the chores stops
+`livrer` until `affiner` and `repartir` have taken it out. A chore nothing can
+check is ticked on the person's word, marked *confirmé par la personne*; a run
+that picks up a stopped slice reviews its code from before that slice's build. Chores left open go under **Reste à
 faire** marked *à la main*, which `repartir` leaves to the person.
 
 ## Still to do
