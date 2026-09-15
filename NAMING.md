@@ -261,7 +261,8 @@ window with the person there, because this is where accounts, cards and real
 messages come in. In order: it checks every slice is *fusionner* and every
 a-trancher answer is placed, and re-runs each **Pour lancer** without touching
 the person's data; it asks the *avant la livraison* chores, has the person type
-every secret themselves (`! ` or the provider's page), and checks each without
+every secret themselves (on the provider's page or in their own terminal, never
+with `! `, which puts it in the conversation), and checks each without
 showing a value — by name, or as "no longer the local stand-in"; it shows a
 table of each action, what it creates or sends out there, the cost and the
 undo, and waits for a yes (money gets its own); it goes online, follows the
@@ -291,6 +292,13 @@ non-developer through messages:
   file, and a tick left uncommitted would fail the next run's clean-tree
   check. Still unseen: a real deploy, a paid row, the check online, and
   `livraison.md` itself.
+
+Codex reviewed PRs #4 and #5 on 2026-09-14; all seven findings were fixed.
+`executer` now stops without `architecture.md`, commits its ticked chores,
+names the folder to the code review, and resolves a merge whose only conflict
+is `a-trancher.md` by keeping both entries. `livrer` keeps secrets out of `! `,
+commits an answer it collects, and, when a row fails, writes and commits
+`livraison.md` with what already went out, so the next run repeats nothing.
 
 ## Still to do
 
