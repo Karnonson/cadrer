@@ -78,7 +78,7 @@ The fixed French vocabulary, as it stands in the skills:
 | `decisions.md` headings | Décidé · Supposé · Abandonné |
 | `architecture.md` headings | Pièces · Trajet · Données · Comptes et secrets · Coût · En local · À faire à la main · Écarté |
 | Chore markers | *avant la construction* · *avant la livraison* |
-| `livraison.md` headings | En ligne · Mise en ligne · Vérifié en ligne · Si ça casse · Reste à faire |
+| `livraison.md` headings | En ligne · Mise en ligne · Vérifié en ligne · Si ça casse · Reste à faire (lines marked *à la main* stay the person's) |
 | `a-trancher.md` markers | Question · Choix · En attendant · Réponse |
 | `spec.md` headings | Problème · Solution · Apparence · User stories · Décisions de réalisation · Décisions de test · Hors périmètre · Ouvert |
 | Story form | En tant que <qui>, je veux <quoi>, afin de <bénéfice> |
@@ -86,7 +86,7 @@ The fixed French vocabulary, as it stands in the skills:
 | Audit headings | Deuxième passe · Rectifié · Plus tard |
 | Verdicts | fusionner · corriger d'abord · retour à la tranche |
 | Worktree branch | `tranche-<NN>` |
-| Screenshots, commits | `captures/<NN>-<state>.png` · `captures/livraison-<state>.png` · `audit <NN> — <verdict>` · `audit code` · `À faire à la main : <what>` · `livraison — <address>` · `parallele` |
+| Screenshots, commits | `captures/<NN>-<state>.png` · `captures/livraison-<state>.png` · `audit <NN> — <verdict>` · `audit code` · `À faire à la main : <what>` · `livraison — <address>` · `livraison — arrêtée : <row>` · `parallele` |
 
 `builds/`, `prototypes/`, `audits/` and the words *Spec*, *Code*, *Verdict*
 stay as they are. `User stories` stays English because the course already says
@@ -293,12 +293,17 @@ non-developer through messages:
   check. Still unseen: a real deploy, a paid row, the check online, and
   `livraison.md` itself.
 
-Codex reviewed PRs #4 and #5 on 2026-09-14; all seven findings were fixed.
-`executer` now stops without `architecture.md`, commits its ticked chores,
-names the folder to the code review, and resolves a merge whose only conflict
-is `a-trancher.md` by keeping both entries. `livrer` keeps secrets out of `! `,
-commits an answer it collects, and, when a row fails, writes and commits
-`livraison.md` with what already went out, so the next run repeats nothing.
+Codex reviewed PRs #4 and #5 twice on 2026-09-14; all thirteen findings were
+fixed. `executer` now stops without `architecture.md`, commits its ticked
+chores, names the folder to the code review and runs it whenever a slice was
+built, resolves a merge whose only conflict is `a-trancher.md` by keeping both
+entries, and stops on a secret committed by a build — the person changes it
+where it was issued, and the branch is not pushed until the commit leaves
+history. `livrer` keeps secrets out of `! `, gives a paid chore its own yes,
+commits an answer it collects, runs the online check once, and, when a row
+fails, writes and commits `livraison.md` with what went out, so the next run
+redoes only what is not still there. Chores left open go under **Reste à
+faire** marked *à la main*, which `repartir` leaves to the person.
 
 ## Still to do
 
