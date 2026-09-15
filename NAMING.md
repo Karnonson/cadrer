@@ -20,10 +20,10 @@ the GitHub repo.
 | Letter | Step | Command | Writes |
 | --- | --- | --- | --- |
 | **C** | Choisir | `/cadrer:choisir` | `idee.md` |
-| **A** | Affiner | `/cadrer:affiner` | `decisions.md` |
+| **A** | Affiner | `/cadrer:affiner` | `decisions.md`, `architecture.md` |
 | **D** | Détailler | `/cadrer:detailler` | `spec.md` |
 | **R** | Répartir | `/cadrer:repartir` | `tranches.md` |
-| **E** | Exécuter | `/cadrer:executer` | the code, ticks under each slice, and an audit per slice through réviser |
+| **E** | Exécuter | `/cadrer:executer` | the code, ticks under each slice, an audit per slice through réviser, `a-trancher.md` |
 | **R** | Réviser | `/cadrer:reviser` | `audits/<NN>.md` |
 
 Typing the six commands spells the method. Step 1 is **choisir**, not
@@ -35,10 +35,23 @@ They are not steps of this loop. CADRER is re-run per idea and per slice; going
 live happens once, when a loop closes, and monitoring never stops. A continuous
 activity inside a numbered sequence misdescribes the mechanism.
 
-The split already exists in the course: section 05 puts the app online and is a
-lesson, not a skill, and architecture, secrets, tests and monitoring are already
-Part 2 material. Part 2 gets its own name — **TENIR**, proposed, not locked —
-covering real deployment, architecture, secrets, tests, monitoring.
+**One name for the whole thing (decided 2026-09-13).** CADRER names everything
+an agent does with the person, from the idea to the thing online and kept
+running. There is no second method name: **TENIR**, proposed for Part 2 on
+2026-09-10, is dropped — two names for one plugin and one way of working is one
+too many. So:
+
+- **The acronym stays the build loop.** Six letters, six steps, run per idea.
+- **What happens once or never stops is a command with no letter**:
+  `/cadrer:livrer` puts the finished loop online (planned, its own PR; section
+  05 of the course, until now a lesson, becomes it). Monitoring, if it ever is
+  a command, joins it the same way.
+- **Architecture, secrets and tests are not commands.** They are topics inside
+  the steps: `affiner` settles the architecture and writes `architecture.md`,
+  secrets are named in its **Comptes et secrets**, tests are `detailler`'s
+  **Décisions de test**.
+- **The course has parts, not methods.** Part 1 is Première Livraison — the
+  loop and `livrer`. Part 2 uses the same plugin, under a plain title.
 
 **The rule:** an acronym is a counting contract. If a seventh skill ever truly
 belongs to the build loop, it goes inside one of the six letters or out into the
@@ -59,16 +72,19 @@ The fixed French vocabulary, as it stands in the skills:
 
 | Where | Words |
 | --- | --- |
-| Files | `idee.md`, `decisions.md`, `spec.md`, `tranches.md`, `audits/<NN>.md` |
+| Files | `idee.md`, `decisions.md`, `architecture.md`, `spec.md`, `tranches.md`, `a-trancher.md`, `audits/<NN>.md`, `audits/code.md` |
 | `idee.md` headings | Le problème · En une phrase · Pourquoi celle-ci · Écartées · Pas encore · Encore ouvert · Jusqu'où on est allé |
 | `decisions.md` headings | Décidé · Supposé · Abandonné |
+| `architecture.md` headings | Pièces · Trajet · Données · Comptes et secrets · Coût · En local · À faire à la main · Écarté |
+| Chore markers | *avant la construction* · *avant la livraison* |
+| `a-trancher.md` markers | Question · Choix · En attendant · Réponse |
 | `spec.md` headings | Problème · Solution · Apparence · User stories · Décisions de réalisation · Décisions de test · Hors périmètre · Ouvert |
 | Story form | En tant que <qui>, je veux <quoi>, afin de <bénéfice> |
 | Slice markers | À construire · Bloqué par · Fait quand · Non placé · Choisi · Pour lancer · Fichiers · Audit · Corrigé |
 | Audit headings | Deuxième passe · Rectifié · Plus tard |
 | Verdicts | fusionner · corriger d'abord · retour à la tranche |
 | Worktree branch | `tranche-<NN>` |
-| Screenshots, commits | `captures/<NN>-<state>.png` · `audit <NN> — <verdict>` · `parallele` |
+| Screenshots, commits | `captures/<NN>-<state>.png` · `audit <NN> — <verdict>` · `audit code` · `parallele` |
 
 `builds/`, `prototypes/`, `audits/` and the words *Spec*, *Code*, *Verdict*
 stay as they are. `User stories` stays English because the course already says
@@ -181,6 +197,61 @@ command: `context: fork`, so it also runs in a sub-agent when typed.
   the finished thing until it holds; `detailler` reads the user stories back.
   Each says a long interview is the job.
 
+## Done 2026-09-13 — `cadrer` 0.5.0: architecture up front, fewer round trips
+
+0.4.0 ran on a real project: seven slices, a Telegram bot with a scheduled
+routine. Read from the session files, weighting cache writes 1.25, cache reads
+0.1 and output 5: first builds 48% of the cost, audit conductors 18%, fix
+passes 16%, axis sub-agents 11%, the main window 7%. An audit cost about 40% of
+a build; a fix and its re-audit about 85%. Three of the five fix passes fixed no
+defect: they carried a new answer from the person (a routine redesigned after a
+billing question, two wording changes), and with their re-audits they were
+about a fifth of the run. The builders also stopped about six times on slice
+01 alone — hosting, billing, region, where a token lives — because nothing
+before the build had asked, and they put every slice online.
+
+- **Architecture moved into `affiner`.** After the day holds, Claude works out
+  two or three setups and asks only what a non-developer can judge — computer
+  off or not, card and monthly cost, accounts they have, limits of a key or a
+  free tier, chores by hand — then follows one action through the parts.
+  `architecture.md` holds it; `detailler` points to it instead of inventing
+  parts, `repartir` checks slices against it, the build reads it as rules.
+  Its **En local** says how each part is tried without going online, so the
+  loop never deploys; **À faire à la main** is the person's checklist, which
+  `executer` asks for all at once and checks before the first slice.
+- **Questions go to a file, not back into the run.** A builder or an audit that
+  meets a choice only the person can make builds its pick, writes it under
+  **Choisi :** and adds an entry to `a-trancher.md`; `executer` asks the open
+  entries at the end, and an answer that changes the build goes through
+  `repartir`, never into a fix pass. Only money, a missing account or secret,
+  or something that cannot be undone still stops a builder.
+- **One audit agent per slice in the loop.** It does the spec check itself
+  instead of briefing a sub-agent, runs the checks once, and adds the
+  architecture to what it checks (a part in the wrong place, something online,
+  a secret's value in a tracked file). The code check runs once per run over
+  the whole diff, into `audits/code.md`. A second pass reads only the fix list
+  and the fix diff, re-running what the fixer said it ran. A typed
+  `/cadrer:reviser` keeps both axis sub-agents.
+
+Measured the same day, headless, on one two-slice fixture (a to-do command
+plus a daily send to a webhook, its address a secret in `.env.local`, a local
+stand-in for the webhook, and one question the spec left open), run once with
+0.4.0 and once with 0.5.0. Weighted tokens from the session files:
+
+| | 0.4.0 | 0.5.0 |
+| --- | --- | --- |
+| First audit, slice 01 · 02 | 109k · 185k (1.7× its build) | 67k · 96k (0.5–0.7×) |
+| Second pass | 172k | 62k · 81k |
+| Code check | in every audit | 55k, once |
+| All auditing, share of run | 56% | 35% |
+| Outcome | 01 *fusionner*; 02 *retour à la tranche* after a fix | both *fusionner* after one fix each |
+
+0.5.0 cost more in total (1.03M against 0.83M; $7.22 against $5.85 reported)
+because it did two fix cycles and finished, where 0.4.0 stopped after one. Both
+fixes fixed a crash, not an answer. The builders stopped for nothing, wrote two
+`a-trancher.md` entries, asked at the end, and nothing went online. One run
+each, so read the shares, not the totals.
+
 ## Still to do
 
 1. **Run the loop end to end** — 0.4.0 was run headless (`claude -p`) on a
@@ -193,14 +264,17 @@ command: `context: fork`, so it also runs in a sub-agent when typed.
    `/cadrer:reviser`, first with `claude --plugin-dir plugins/cadrer`, then
    through the real install line. Before the course pass, so the lessons copy
    what was seen.
-2. **The course pass.** Lessons 4.2 to 4.8 and the platform exports still say
+2. **`/cadrer:livrer`.** Reads `architecture.md`, asks for the *avant la
+   livraison* chores, puts the finished loop online and checks it there. Its
+   own PR, after 0.5.0 has run on a real project.
+3. **The course pass.** Lessons 4.2 to 4.8 and the platform exports still say
    `/workflow:ideate` and `claude plugin install workflow@workflow-skills`.
    Replace the commands (`/cadrer:choisir`…), the install line
    (`cadrer@cadrer`), `claude plugin details workflow`, and add the box above
    to 4.2. The "Did it work?" file checks change too: `idee.md`, `tranches.md`,
    and the headings and markers in the table above (`Fait quand`, not
    `Done when`). An English export, if one stays, points at the same plugin.
-3. **The hub.** The course's rule says `~/Desktop/skill-hub/skills` is the
+4. **The hub.** The course's rule says `~/Desktop/skill-hub/skills` is the
    source of truth and this repo holds copies. That is no longer how it works:
    `plugins/cadrer/skills/` here is the source, and the course copy in
    `~/Desktop/ai-coding-course/skills/` should be a copy of it (or a pointer).
