@@ -17,11 +17,13 @@ Each slice, on the branch you are on:
 3. **Record.** Commit `audits/<NN>.md`, `tranches.md` and `a-trancher.md` if it changed, as `audit <NN> — <verdict>`.
 4. **Next.** *fusionner*: the next open slice. *corriger d'abord*: back to 1 on the same slice as a fix pass, then 2 — a second pass. *retour à la tranche*: start no new slice.
 
+An audit that found a secret's value in a tracked file stops the run before any fix pass: tell the person which secret and which commit — never the value — that its value must be changed where it was issued, since a later commit leaves it in git history, and that the branch must not be pushed until that commit is taken out of it; offer to do that, and do it only with their yes.
+
 A new entry in `a-trancher.md` never stops the run and never starts a fix pass: the slice goes on with what was built.
 
 With `parallele`: every open slice at once, one worktree each — `git worktree add ../<slug>-<NN> -b tranche-<NN>` from the branch you are on — and every brief names its worktree, where the sub-agent works and commits. On *fusionner*, `git merge --no-ff tranche-<NN>` into your branch, `git worktree remove ../<slug>-<NN>`, then start the slices that merge opened. A merge whose only conflict is `a-trancher.md`: keep both slices' entries in that file, `git add` it and finish the merge. Any other conflict: `git merge --abort`, start nothing new, let running slices finish their audit, and stop naming the files both slices changed.
 
-Stop when no slice is open, on *retour à la tranche*, on a merge conflict, or when the person leaves a returned question unanswered. If a slice reached *fusionner* in this run, start one sub-agent for the **Code** axis. Brief: the folder, and to read the Code axis paragraph in `${CLAUDE_PLUGIN_ROOT}/skills/reviser/SKILL.md` and follow it over `git diff <start commit>...HEAD` with the same excludes that file gives, never edit code, write the report under a heading naming the two commits at the end of `audits/code.md` beside `tranches.md`, return under 100 words. Commit that file as `audit code`. Then look at the screenshots the reports named, and end with:
+Stop when no slice is open, on *retour à la tranche*, on a merge conflict, on a committed secret, or when the person leaves a returned question unanswered. If a slice was built in this run, start one sub-agent for the **Code** axis. Brief: the folder, and to read the Code axis paragraph in `${CLAUDE_PLUGIN_ROOT}/skills/reviser/SKILL.md` and follow it over `git diff <start commit>...HEAD` with the same excludes that file gives, never edit code, write the report under a heading naming the two commits at the end of `audits/code.md` beside `tranches.md`, return under 100 words. Commit that file as `audit code`. Then look at the screenshots the reports named, and end with:
 
 - a table — slice · title · verdict · how to try it (its **Pour lancer**);
 - the screenshots, one line each on what it shows;
