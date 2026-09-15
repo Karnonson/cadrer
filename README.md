@@ -10,8 +10,9 @@ names and headings, and Claude answering and writing in the language you write t
 | **A**ffiner | `/cadrer:affiner` | `decisions.md`, `architecture.md` |
 | **D**étailler | `/cadrer:detailler` | `spec.md` |
 | **R**épartir | `/cadrer:repartir` | `tranches.md` |
-| **E**xécuter | `/cadrer:executer` | the code, ticks under each slice, and an audit per slice through réviser |
+| **E**xécuter | `/cadrer:executer` | the code, ticks under each slice, an audit per slice through réviser, `a-trancher.md` |
 | **R**éviser | `/cadrer:reviser` | `audits/<NN>.md` |
+| — Livrer | `/cadrer:livrer` | the build online, `livraison.md` |
 
 All six write into one folder per idea, `builds/<NN>-<slug>/`, and each reads what the last one left.
 `affiner` settles what gets built, then where it runs, what it costs and what the person prepares by
