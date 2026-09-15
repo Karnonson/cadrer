@@ -28,7 +28,7 @@ Stop when no slice is open, on *retour à la tranche*, on a merge conflict, on a
 - a table — slice · title · verdict · how to try it (its **Pour lancer**);
 - the screenshots, one line each on what it shows;
 - every box left open and why, every **Choisi :** line, the **Plus tard** items and what the Code axis found;
-- why it stopped and what comes next — after *retour à la tranche*, the repartir skill on the line the audit named; slices still to build, `/cadrer:executer` again once that is done;
+- why it stopped and what comes next — after *retour à la tranche*, the repartir skill on the line the audit named; slices still to build, `/cadrer:executer` again once that is done; every slice *fusionner* and every a-trancher answer placed, `/cadrer:livrer` puts it online;
 - in plain words, the first thing to try and how.
 
 Then put each `a-trancher.md` entry with an empty **Réponse :** to the person — up to four per tool call, what was built as the first choice — and write each answer there. If an answer changes what was built, commit the file and say the repartir skill turns it into slices; if none does, commit it and say so.
