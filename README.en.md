@@ -98,7 +98,7 @@ uv run tools/token_estimate.py path/to/en/skills plugins/cadrer/skills   # EN ag
 ```
 
 `--detail o200k` breaks it down per skill, `--json` prints the numbers. The public page for
-non-technical readers, *Le prix du français*, lives in its own repo, `~/Desktop/prix-du-francais`.
+non-technical readers, *Le prix du français*, lives in its own repo, [Karnonson/prix-du-francais](https://github.com/Karnonson/prix-du-francais).
 
 ## Credits
 

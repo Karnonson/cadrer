@@ -104,7 +104,7 @@ uv run tools/token_estimate.py path/to/en/skills plugins/cadrer/skills   # EN co
 ```
 
 `--detail o200k` détaille par compétence, `--json` affiche les chiffres. La page publique pour les
-lecteurs non techniques, *Le prix du français*, vit dans son propre dépôt, `~/Desktop/prix-du-francais`.
+lecteurs non techniques, *Le prix du français*, vit dans son propre dépôt, [Karnonson/prix-du-francais](https://github.com/Karnonson/prix-du-francais).
 
 ## Crédits
 
